@@ -113,6 +113,30 @@ header{height:70px;background:#fbf7ed;display:flex;align-items:center;position:s
 .course-point span{font-size:9px;color:var(--muted)}
 .course-actions{display:flex;flex-wrap:wrap;gap:10px}
 
+
+/* INDIAN PHILOSOPHY + COGNITIVE SCIENCE */
+.philosophy-course{padding:58px 0 55px;background:linear-gradient(120deg,#f8f3e7,#eee9d9);overflow:hidden}
+.philosophy-head{text-align:center;max-width:760px;margin:0 auto 28px}
+.philosophy-head p{font-size:11px;color:var(--muted);max-width:620px;margin:12px auto 0}
+.philosophy-intro{display:grid;grid-template-columns:1.05fr .95fr;gap:30px;align-items:center;margin-bottom:30px}
+.philosophy-copy{padding:8px 5px}.philosophy-copy h2{font-size:clamp(31px,4vw,43px)}
+.philosophy-copy p{font-size:11px;color:var(--muted);margin:12px 0 16px;max-width:560px}
+.philosophy-visual{min-height:210px;border:1px solid var(--gold);border-radius:48% 48% 8px 8px;background:linear-gradient(90deg,#1e4728aa,#1e472822),url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1100&q=85') center/cover;display:flex;align-items:flex-end;justify-content:flex-end;padding:18px}
+.philosophy-visual span{font:italic 17px 'Kalam',cursive;color:#fff8e8;text-shadow:0 2px 8px #0008}
+.philosophy-modules{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.philosophy-module{background:#fbf8ef;border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:0 5px 18px #3b32120a;display:flex;flex-direction:column;min-height:230px}
+.philosophy-module-top{height:7px;background:linear-gradient(90deg,var(--green),var(--gold2))}
+.philosophy-module-body{padding:18px 16px 16px;display:flex;flex-direction:column;flex:1}
+.philosophy-number{font:500 25px 'Cormorant Garamond',serif;color:var(--gold);margin-bottom:7px}
+.philosophy-module h3{font:600 18px/1.12 'Cormorant Garamond',serif;color:var(--green);margin-bottom:9px}
+.philosophy-module p{font-size:10px;line-height:1.7;color:var(--muted);flex:1}
+.philosophy-tag{display:inline-block;align-self:flex-start;margin-top:12px;padding:6px 10px;border:1px solid var(--line);border-radius:20px;color:var(--green);font-size:9px;letter-spacing:.4px}
+.philosophy-bottom{display:flex;justify-content:space-between;align-items:center;gap:18px;margin-top:27px;padding:17px 20px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.philosophy-bottom p{font-size:10px;color:var(--muted)}.philosophy-bottom strong{color:var(--green);font-weight:700}
+@media(max-width:900px){.philosophy-modules{grid-template-columns:repeat(2,1fr)}.philosophy-intro{gap:20px}}
+@media(max-width:700px){.philosophy-course{padding:42px 0}.philosophy-intro{grid-template-columns:1fr;gap:14px}.philosophy-visual{min-height:170px}.philosophy-modules{grid-template-columns:1fr 1fr;gap:10px}.philosophy-module-body{padding:14px 12px}.philosophy-module h3{font-size:16px}.philosophy-bottom{align-items:flex-start;flex-direction:column}}
+@media(max-width:380px){.philosophy-modules{grid-template-columns:1fr}}
+
 /* HEALING */
 .healing{padding:38px 0;background:#f8f4e9}
 .healing-grid{display:grid;grid-template-columns:.9fr 1.7fr;gap:45px;align-items:center}
@@ -307,6 +331,7 @@ footer{background:#f8f3e8;padding:30px 0 15px}
    <a href="#home">Home</a>
    <a href="#about">About Us</a>
    <a href="#course">Courses</a>
+   <a href="#philosophy">Philosophy</a>
    <a href="#healing">Healing</a>
    <a href="#yoga">Yog</a>
    <a href="#retreats">Retreats</a>
@@ -404,6 +429,38 @@ footer{background:#f8f3e8;padding:30px 0 15px}
   </div>
   <div class="arch-frame reveal">
    <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=900&q=85" alt="Sound healing instruments">
+  </div>
+ </div>
+</section>
+
+
+<!-- INDIAN PHILOSOPHY + COGNITIVE SCIENCE -->
+<section class="philosophy-course" id="philosophy">
+ <div class="container">
+  <div class="philosophy-head reveal">
+   <div class="eyebrow">A new learning journey</div>
+   <h2>Indian Philosophy <em>+ Cognitive Science.</em></h2>
+   <p>Explore the meeting point of India’s philosophical traditions and modern understanding of the mind, mental processes and consciousness.</p>
+  </div>
+  <div class="philosophy-intro">
+   <div class="philosophy-copy reveal">
+    <div class="eyebrow">Wisdom meets the mind</div>
+    <h2>Understand the mind.<br><em>Explore the self.</em></h2>
+    <p>This learning programme introduces Indian philosophical ideas alongside themes from modern cognitive science. Move through four connected modules, from foundational traditions to questions of consciousness and identity.</p>
+    <a class="btn filled" href="#booking" onclick="document.getElementById('service').value='Indian Philosophy + Cognitive Science';">Enquire About This Course →</a>
+   </div>
+   <div class="philosophy-visual reveal"><span>ज्ञान · ध्यान · चेतना</span></div>
+  </div>
+  <div class="eyebrow" style="text-align:center;margin-bottom:15px">Course modules</div>
+  <div class="philosophy-modules">
+   <article class="philosophy-module reveal"><div class="philosophy-module-top"></div><div class="philosophy-module-body"><div class="philosophy-number">01</div><h3>Introduction of Indian Philosophical Traditions and Modern Cognitive Science</h3><p>An introduction to Indian philosophical traditions and the foundations of modern cognitive science.</p><span class="philosophy-tag">Foundations & perspectives</span></div></article>
+   <article class="philosophy-module reveal"><div class="philosophy-module-top"></div><div class="philosophy-module-body"><div class="philosophy-number">02</div><h3>Mental States, Yoga, and Mindfulness</h3><p>Explore mental states and the relationship of yoga and mindfulness with attention, awareness and the mind.</p><span class="philosophy-tag">Mind & practice</span></div></article>
+   <article class="philosophy-module reveal"><div class="philosophy-module-top"></div><div class="philosophy-module-body"><div class="philosophy-number">03</div><h3>Indian Philosophy</h3><p>An overview of key ideas and approaches within Indian philosophical thought.</p><span class="philosophy-tag">Ideas & traditions</span></div></article>
+   <article class="philosophy-module reveal"><div class="philosophy-module-top"></div><div class="philosophy-module-body"><div class="philosophy-number">04</div><h3>Consciousness, Self, and Identity</h3><p>Explore questions about consciousness, the self and human identity through Indian philosophical perspectives.</p><span class="philosophy-tag">Self & consciousness</span></div></article>
+  </div>
+  <div class="philosophy-bottom">
+   <p><strong>Interested in joining?</strong> Contact Dhyana Naad Yogshala for course format, schedule, fees and registration details.</p>
+   <a class="btn" href="https://wa.me/919557614064?text=Namaste%2C%20I%20am%20interested%20in%20the%20Indian%20Philosophy%20%2B%20Cognitive%20Science%20course.">Enquire on WhatsApp ↗</a>
   </div>
  </div>
 </section>
@@ -556,6 +613,7 @@ footer{background:#f8f3e8;padding:30px 0 15px}
     <option>Group Healing</option>
     <option>Distance Healing</option>
     <option>Sound Healing Level 1 Course</option>
+    <option>Indian Philosophy + Cognitive Science</option>
     <option>Spiritual Classes</option>
     <option>Workshop / Retreat</option>
    </select>
