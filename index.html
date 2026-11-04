@@ -731,7 +731,7 @@ document.getElementById('bookingForm').addEventListener('submit',function(e){
 <script>
 /* SUPABASE CONFIG: paste your project publishable key below. Never use sb_secret or service_role here. */
 const DN_SUPABASE_URL = 'https://vqiykrsxljzycggawosd.supabase.co';
-const DN_SUPABASE_PUBLISHABLE_KEY = 'PASTE_YOUR_SB_PUBLISHABLE_KEY_HERE';
+const DN_SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_RCB-n8GcX3qHc76YisYjGQ_79acg_xw';
 const DN_BUCKET = 'website-media';
 const DN_ROW_ID = 'main';
 let dnClient = null, dnUser = null, dnEdits = {}, dnSelected = null, dnEditMode = false;
@@ -765,6 +765,5 @@ $dn('dn-save').addEventListener('click',async()=>{if(!dnClient||!dnUser)return;c
 $dn('dn-json-save').addEventListener('click',()=>{try{let data=JSON.parse($dn('dn-json').value);if(!data||typeof data!=='object'||Array.isArray(data))throw Error();dnEdits=data;dnApplyEdits();dnStatus('JSON applied to preview. Click Publish changes to save online.');}catch(e){dnStatus('Invalid JSON.');}});
 window.addEventListener('DOMContentLoaded',()=>{dnApplyEdits();dnInit();});
 </script>
-
 </body>
 </html>
