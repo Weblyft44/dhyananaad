@@ -5,238 +5,121 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#f7f2e6">
-<title>Dhyana Naad Yogshala | Yoga, Naad & Dhyana</title>
+<title>Dhyana Naad Yogshala | Discover the Naad Within</title>
+<meta name="description" content="Yoga, Naad, Dhyana and Sound Healing at Dhyana Naad Yogshala, Dehradun.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&family=Kalam:wght@300;400&display=swap" rel="stylesheet">
+
+<!-- FAVICON: replace this temporary symbol with the original logo when available -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>ॐ</text></svg>">
 
 <style>
 :root{
- --cream:#f7f2e6;
- --cream2:#eee9d9;
- --green:#234b29;
- --green2:#315d35;
- --dark:#183c22;
- --gold:#b99553;
- --gold2:#d4b979;
- --ink:#262b20;
- --muted:#77766a;
+ --cream:#f7f2e6;--cream2:#eee9d9;--green:#234b29;
+ --green2:#315d35;--dark:#183c22;--gold:#b99553;
+ --gold2:#d4b979;--ink:#262b20;--muted:#77766a;
  --line:#d9cfb5;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
- background:var(--cream);
- color:var(--ink);
- font-family:'DM Sans',sans-serif;
- overflow-x:hidden;
-}
+html{scroll-behavior:smooth;scroll-padding-top:75px}
+body{background:var(--cream);color:var(--ink);font-family:'DM Sans',sans-serif;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
 button,input,select,textarea{font:inherit}
 img{display:block;max-width:100%}
-.serif{font-family:'Cormorant Garamond',serif}
-.script{font-family:'Kalam',cursive}
 .container{width:min(1160px,88%);margin:auto}
-.eyebrow{
- font-size:9px;letter-spacing:4px;text-transform:uppercase;
- color:var(--green2);font-weight:600;margin-bottom:10px;
-}
-h2{
- font:500 clamp(30px,4vw,43px)/1.05 'Cormorant Garamond',serif;
- color:#28291f;
-}
+.eyebrow{font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--green2);font-weight:600;margin-bottom:10px}
+h2{font:500 clamp(30px,4vw,43px)/1.05 'Cormorant Garamond',serif;color:#28291f}
 h2 em{color:var(--green);font-style:normal}
 p{line-height:1.8}
-.btn{
- display:inline-flex;align-items:center;justify-content:center;
- gap:13px;padding:12px 22px;border:1px solid var(--green);
- border-radius:30px;background:transparent;color:var(--green);
- font-size:10px;font-weight:600;transition:.3s;cursor:pointer;
-}
-.btn:hover{background:var(--green);color:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:13px;padding:12px 22px;border:1px solid var(--green);border-radius:30px;background:transparent;color:var(--green);font-size:10px;font-weight:600;transition:.3s;cursor:pointer}
+.btn:hover{background:var(--green);color:white}
 .btn.filled{background:var(--green);color:white}
 .btn.filled:hover{background:var(--gold);border-color:var(--gold)}
-.gold-line{height:1px;width:35px;background:var(--gold)}
 section{position:relative}
+.reveal{opacity:0;transform:translateY(18px);transition:.7s ease}
+.reveal.show{opacity:1;transform:translateY(0)}
 
-/* HEADER */
-header{
- height:70px;background:#fbf7ed;
- display:flex;align-items:center;position:relative;z-index:20;
- border-bottom:1px solid rgba(185,149,83,.2);
-}
-.nav{
- width:min(1200px,94%);margin:auto;
- display:flex;align-items:center;justify-content:space-between;
-}
+/* NAVIGATION */
+header{height:70px;background:#fbf7ed;display:flex;align-items:center;position:sticky;top:0;z-index:50;border-bottom:1px solid rgba(185,149,83,.2)}
+.nav{width:min(1200px,94%);margin:auto;display:flex;align-items:center;justify-content:space-between}
 .brand{display:flex;align-items:center;gap:9px;min-width:220px}
-.brand-symbol{
- width:43px;height:43px;border:1px solid var(--gold);
- border-radius:50%;display:grid;place-items:center;
- color:var(--green);font-size:26px;
-}
+.brand-symbol{width:43px;height:43px;border:1px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--green);font-size:26px}
 .brand-name{font-size:14px;font-weight:600;color:#262b20}
 .brand-name strong{color:var(--green);font-size:18px}
-.brand-name small{
- display:block;text-align:center;font-size:8px;
- letter-spacing:1px;color:#796e58;margin-top:1px;
-}
-.navlinks{display:flex;align-items:center;gap:22px}
-.navlinks a{
- font-size:9px;color:#44483d;transition:.2s;
-}
-.navlinks a:hover,.navlinks a.active{color:var(--green);font-weight:700}
-.navlinks a.active:after{
- content:"";height:2px;background:var(--green);
- display:block;margin-top:8px;
-}
-.nav-icon{color:var(--green);font-size:19px}
-.menu{
- display:none;border:0;background:none;color:var(--green);
- font-size:24px;cursor:pointer;
-}
+.brand-name small{display:block;text-align:center;font-size:8px;letter-spacing:1px;color:#796e58;margin-top:1px}
+.navlinks{display:flex;align-items:center;gap:17px}
+.navlinks a{font-size:9px;color:#44483d;transition:.2s}
+.navlinks a:hover{color:var(--green);font-weight:700}
+.nav-icon{color:var(--green);font-size:17px}
+.menu{display:none;border:0;background:none;color:var(--green);font-size:24px;cursor:pointer}
 
 /* HERO */
-.hero{
- height:420px;min-height:420px;position:relative;
- display:flex;align-items:center;overflow:hidden;
- background:#e9dfc8;
-}
-.hero-bg{
- position:absolute;inset:0;
- background:
- linear-gradient(90deg,rgba(249,244,228,.92) 0%,rgba(249,244,228,.64) 36%,rgba(249,244,228,.03) 75%),
- url('https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=2200&q=90') center 48%/cover;
-}
+.hero{height:430px;min-height:430px;position:relative;display:flex;align-items:center;overflow:hidden;background:#e9dfc8}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(90deg,rgba(249,244,228,.92),rgba(249,244,228,.55) 40%,rgba(249,244,228,.03) 80%),url('https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=2200&q=90') center/cover}
 .hero-inner{position:relative;width:min(1160px,88%);margin:auto}
-.hero h1{
- font:600 clamp(55px,8vw,91px)/.78 'Cormorant Garamond',serif;
- color:#31502c;letter-spacing:-2px;margin:17px 0;
-}
+.hero h1{font:600 clamp(55px,8vw,91px)/.78 'Cormorant Garamond',serif;color:#31502c;letter-spacing:-2px;margin:17px 0}
 .hero h1 span{display:block}
 .hero h1 .naad{font-size:1.25em}
 .hero-sub{font-size:12px;letter-spacing:2px;color:#514d40;margin:20px 0}
-.hero .btn{padding:12px 25px}
-.hero-note{
- position:absolute;right:8%;top:22%;
- font:italic 17px/1.3 'Kalam',cursive;color:#4b493a;
- max-width:140px;transform:rotate(-4deg);
-}
-.wave{
- margin-top:16px;color:var(--green);
- font-size:25px;letter-spacing:2px;
-}
-.hero-flower{
- position:absolute;left:36%;top:26%;
- font:65px 'Cormorant Garamond';color:var(--gold);
- opacity:.85;transform:rotate(-12deg);
-}
+.hero-note{position:absolute;right:8%;top:22%;font:italic 17px/1.3 'Kalam',cursive;color:#4b493a;max-width:140px;transform:rotate(-4deg)}
+.hero-note .wave{margin-top:16px;font-size:25px;color:var(--green)}
+.hero-flower{position:absolute;left:36%;top:26%;font:65px 'Cormorant Garamond';color:var(--gold);opacity:.85}
 
 /* ABOUT */
-.about{
- padding:45px 0 40px;
- background:linear-gradient(110deg,#f8f3e7,#f0eadb);
- overflow:hidden;
-}
-.about-grid{
- display:grid;grid-template-columns:1fr 1fr 180px;
- gap:45px;align-items:center;
-}
+.about{padding:45px 0 40px;background:linear-gradient(110deg,#f8f3e7,#f0eadb);overflow:hidden}
+.about-grid{display:grid;grid-template-columns:1fr 1fr 180px;gap:45px;align-items:center}
 .about-copy{padding-left:10px}
-.about-copy p{
- font-size:11px;color:#66665b;margin:14px 0 17px;
- max-width:340px;
-}
-.about-copy .mantra{color:var(--green);font-family:'Cormorant Garamond';font-size:17px}
-.arch-frame{
- position:relative;padding:9px;
- border:1px solid var(--gold);
- border-radius:48% 48% 0 0;
-}
-.arch-frame:before{
- content:"";position:absolute;inset:-7px;
- border:1px solid var(--gold);border-radius:48% 48% 0 0;
- pointer-events:none;
-}
-.arch-frame img{
- width:100%;height:245px;object-fit:cover;
- border-radius:48% 48% 0 0;
-}
-.about-values{
- display:flex;flex-direction:column;gap:17px;
- color:var(--green);font-size:9px;letter-spacing:3px;
- font-weight:600;
-}
+.about-copy p{font-size:11px;color:#66665b;margin:14px 0 17px;max-width:340px}
+.mantra{color:var(--green);font-family:'Cormorant Garamond';font-size:17px}
+.arch-frame{position:relative;padding:9px;border:1px solid var(--gold);border-radius:48% 48% 0 0}
+.arch-frame:before{content:"";position:absolute;inset:-7px;border:1px solid var(--gold);border-radius:48% 48% 0 0;pointer-events:none}
+.arch-frame img{width:100%;height:245px;object-fit:cover;border-radius:48% 48% 0 0}
+.about-values{display:flex;flex-direction:column;gap:17px;color:var(--green);font-size:9px;letter-spacing:3px;font-weight:600}
 .about-values span:last-child{font-size:22px;color:var(--gold)}
 
 /* PATHS */
-.paths{padding:28px 0 38px;text-align:center}
+.paths{padding:35px 0 42px;text-align:center}
 .paths h2{font-size:35px}
-.path-grid{
- display:grid;grid-template-columns:repeat(4,1fr);
- margin-top:25px;
-}
-.path{
- padding:0 20px;position:relative;
-}
-.path:not(:last-child):after{
- content:"";position:absolute;right:0;top:24px;
- height:90px;width:1px;background:var(--line);
-}
-.path-icon{
- width:68px;height:68px;border-radius:50%;
- background:#f0ebd2;margin:0 auto 9px;
- display:grid;place-items:center;
- color:var(--green);font:32px 'Cormorant Garamond';
- border:1px solid rgba(185,149,83,.12);
-}
+.path-grid{display:grid;grid-template-columns:repeat(4,1fr);margin-top:25px}
+.path{padding:0 20px;position:relative}
+.path:not(:last-child):after{content:"";position:absolute;right:0;top:24px;height:90px;width:1px;background:var(--line)}
+.path-icon{width:68px;height:68px;border-radius:50%;background:#f0ebd2;margin:0 auto 9px;display:grid;place-items:center;color:var(--green);font:32px 'Cormorant Garamond';border:1px solid rgba(185,149,83,.12)}
 .path h3{font-size:13px;color:var(--green);margin-bottom:6px}
 .path p{font-size:10px;color:var(--muted);max-width:130px;margin:auto}
 
-/* FEATURE COURSE */
-.feature{
- background:#234b29;color:#f8f1df;
- padding:23px 0;overflow:hidden;
-}
-.feature-grid{
- display:grid;grid-template-columns:1fr 1.2fr .7fr;
- align-items:center;gap:35px;
-}
-.feature-image img{
- width:100%;height:190px;object-fit:contain;
- filter:drop-shadow(0 10px 15px rgba(0,0,0,.2));
-}
+/* COURSE */
+.feature{background:#234b29;color:#f8f1df;padding:25px 0;overflow:hidden}
+.feature-grid{display:grid;grid-template-columns:1fr 1.2fr .7fr;align-items:center;gap:35px}
+.feature-image img{width:100%;height:190px;object-fit:contain;filter:drop-shadow(0 10px 15px #0003)}
 .feature h2{color:#f6eedb;font-size:34px}
 .feature h2 em{color:#e0c58c}
 .feature .eyebrow{color:#d3b775}
 .feature p{font-size:11px;color:#e3dfca;margin:9px 0}
 .feature ul{list-style:none;font-size:10px;line-height:1.8;color:#e6e2cf}
 .feature ul li:before{content:"✓";color:#d9bf82;margin-right:9px}
-.feature .btn{
- background:#f8f2e4;color:var(--green);border-color:#f8f2e4;
- margin-top:10px;padding:10px 22px;
-}
+.feature .btn{background:#f8f2e4;color:var(--green);border-color:#f8f2e4;margin-top:10px;padding:10px 22px}
 .feature-note{text-align:center;color:#d8bd7d}
-.feature-note .wave{font-size:33px;color:#c5a35d}
+.feature-note .wave{font-size:33px}
 .feature-note p{font:italic 16px/1.4 'Kalam',cursive}
 
+/* COURSE INFORMATION */
+.course-details{padding:55px 0;background:#eee9d9}
+.course-details-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
+.course-details p{font-size:11px;color:var(--muted);margin:12px 0}
+.course-points{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:20px 0}
+.course-point{border-left:1px solid var(--gold);padding:8px 13px}
+.course-point strong{font-size:11px;color:var(--green);display:block}
+.course-point span{font-size:9px;color:var(--muted)}
+.course-actions{display:flex;flex-wrap:wrap;gap:10px}
+
 /* HEALING */
-.healing{padding:32px 0;background:#f8f4e9}
-.healing-grid{
- display:grid;grid-template-columns:.9fr 1.7fr;gap:45px;align-items:center;
-}
-.healing-image{position:relative}
-.healing-image img{
- height:225px;width:100%;object-fit:cover;
- border-radius:48% 48% 0 0;
- border:1px solid var(--gold);padding:5px;
-}
+.healing{padding:38px 0;background:#f8f4e9}
+.healing-grid{display:grid;grid-template-columns:.9fr 1.7fr;gap:45px;align-items:center}
+.healing-image img{height:225px;width:100%;object-fit:cover;border-radius:48% 48% 0 0;border:1px solid var(--gold);padding:5px}
 .healing-content h2{font-size:32px}
 .healing-content>p{font-size:10px;color:var(--muted);margin:6px 0 20px}
-.healing-options{
- display:grid;grid-template-columns:repeat(3,1fr);
-}
+.healing-options{display:grid;grid-template-columns:repeat(3,1fr)}
 .healing-option{padding:5px 18px;border-left:1px solid var(--line)}
 .healing-option:first-child{border:0;padding-left:0}
 .healing-option .ico{font-size:22px;color:var(--green)}
@@ -244,14 +127,9 @@ header{
 .healing-option p{font-size:9px;color:var(--muted);line-height:1.6}
 .healing-option a{display:inline-block;margin-top:9px;font-size:9px;color:var(--green);border-bottom:1px solid}
 
-/* YOGA BAND */
-.yoga-band{
- background:#e8ead8;overflow:hidden;
-}
-.yoga-grid{
- display:grid;grid-template-columns:1fr 1fr 1fr;
- align-items:center;min-height:190px;
-}
+/* YOGA */
+.yoga-band{background:#e8ead8;overflow:hidden}
+.yoga-grid{display:grid;grid-template-columns:1fr 1fr 1fr;align-items:center;min-height:190px}
 .yoga-copy{padding:22px 0}
 .yoga-copy h2{font-size:34px}
 .yoga-copy p{font-size:10px;color:#66685d;margin:7px 0 13px}
@@ -263,187 +141,139 @@ header{
 .yoga-type strong{font-size:10px;color:var(--green)}
 .yoga-type small{display:block;color:var(--muted);font-size:9px;margin-top:3px}
 
+/* SCHEDULE */
+.schedule{padding:65px 0;background:#f8f4e9}
+.schedule-head{text-align:center;margin-bottom:30px}
+.schedule-head p{font-size:11px;color:var(--muted);margin-top:10px}
+.schedule-list{max-width:850px;margin:auto}
+.schedule-row{display:grid;grid-template-columns:1fr 1.3fr 1fr;gap:20px;align-items:center;padding:17px 10px;border-top:1px solid var(--line)}
+.schedule-row:last-child{border-bottom:1px solid var(--line)}
+.schedule-day{font:24px 'Cormorant Garamond';color:var(--green)}
+.schedule-type{font-size:11px}
+.schedule-time{text-align:right;color:var(--muted);font-size:10px;line-height:1.8}
+
 /* RETREATS */
-.retreat{padding:25px 0;background:#f7f2e6}
-.retreat-grid{
- display:grid;grid-template-columns:.9fr 1.2fr .8fr;
- align-items:center;gap:35px;
-}
-.retreat-img img{
- width:100%;height:155px;object-fit:cover;
- border-radius:0 70px 0 0;
-}
+.retreat{padding:35px 0;background:#f7f2e6}
+.retreat-grid{display:grid;grid-template-columns:.9fr 1.2fr .8fr;align-items:center;gap:35px}
+.retreat-img img{width:100%;height:155px;object-fit:cover;border-radius:0 70px 0 0}
 .retreat-copy h2{font-size:33px}
 .retreat-copy p{font-size:10px;color:var(--muted);margin:7px 0 12px}
-.retreat-note{
- border-left:1px solid var(--gold);padding-left:25px;
- text-align:center;color:var(--green);
- font:italic 16px/1.5 'Kalam',cursive;
-}
-.retreat-note span{font-size:35px;color:#81956b}
+.retreat-note{border-left:1px solid var(--gold);padding-left:25px;text-align:center;color:var(--green);font:italic 16px/1.5 'Kalam',cursive}
 
 /* HERITAGE */
-.heritage{background:#e5ead9;padding:20px 0}
-.heritage-grid{
- display:grid;grid-template-columns:1fr 1fr .8fr;
- align-items:center;gap:30px;
-}
+.heritage{background:#e5ead9;padding:25px 0}
+.heritage-grid{display:grid;grid-template-columns:1fr 1fr .8fr;align-items:center;gap:30px}
 .heritage h2{font-size:30px}
 .heritage p{font-size:10px;color:var(--muted);margin:5px 0 10px}
-.heritage-img img{height:105px;width:100%;object-fit:cover;border-radius:80px 80px 0 0}
+.heritage-img img{height:120px;width:100%;object-fit:cover;border-radius:80px 80px 0 0}
 .heritage-links{display:flex;flex-direction:column;gap:10px}
-.heritage-links a{
- border:1px solid #78906c;border-radius:30px;padding:9px 13px;
- font-size:9px;color:var(--green);text-align:center;
-}
+.heritage-links a{border:1px solid #78906c;border-radius:30px;padding:9px 13px;font-size:9px;color:var(--green);text-align:center}
+
+/* VIDEO */
+.video-section{padding:65px 0;text-align:center;background:#f8f3e8}
+.video-section p{font-size:11px;color:var(--muted);margin:10px auto 22px;max-width:500px}
+.video-placeholder{max-width:780px;margin:auto;aspect-ratio:16/9;background:linear-gradient(#183c22aa,#183c22aa),url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1200&q=80') center/cover;display:grid;place-items:center;border:1px solid var(--gold)}
+.play-button{width:65px;height:65px;border-radius:50%;background:var(--cream);color:var(--green);display:grid;place-items:center;font-size:22px}
+.video-caption{font-size:9px!important;letter-spacing:2px;margin-top:13px!important}
+
+/* REVIEWS */
+.reviews{padding:60px 0;background:#eee9d9;text-align:center}
+.reviews p{font-size:11px;color:var(--muted);max-width:540px;margin:12px auto 20px}
+.review-note{max-width:600px;margin:20px auto;padding:22px;border:1px solid var(--line);font:italic 20px 'Cormorant Garamond';color:var(--green)}
+
+/* BROCHURE / PAYMENT */
+.resources{padding:55px 0;background:#f8f4e9}
+.resources-grid{display:grid;grid-template-columns:1fr 1fr;gap:25px}
+.resource-card{padding:27px;border:1px solid var(--line);background:#fbf8ef}
+.resource-card h3{font:26px 'Cormorant Garamond';color:var(--green)}
+.resource-card p{font-size:10px;color:var(--muted);margin:9px 0 16px}
 
 /* BOOKING */
-.booking{
- background:#1e4728;color:#f6f0e1;padding:30px 0;
- position:relative;overflow:hidden;
-}
-.booking:before{
- content:"ॐ";position:absolute;left:-20px;top:-80px;
- font:270px 'Cormorant Garamond';color:rgba(211,190,137,.08);
-}
-.booking-grid{
- display:grid;grid-template-columns:.85fr 1.5fr .6fr;
- gap:35px;align-items:center;position:relative;
-}
+.booking{background:#1e4728;color:#f6f0e1;padding:38px 0;position:relative;overflow:hidden}
+.booking:before{content:"ॐ";position:absolute;left:-20px;top:-80px;font:270px 'Cormorant Garamond';color:#d3be8914}
+.booking-grid{display:grid;grid-template-columns:.85fr 1.5fr .6fr;gap:35px;align-items:center;position:relative}
 .booking h2{color:#f7f0de;font-size:34px}
 .booking .eyebrow{color:#d7bc7a}
 .booking-copy p{font-size:10px;color:#d7d8c9;margin:8px 0 12px}
 .phone{font-size:13px;font-weight:600}
-.booking-form{
- display:grid;grid-template-columns:1fr 1fr;gap:7px;
-}
-.booking-form input,.booking-form select,.booking-form textarea{
- width:100%;padding:11px 12px;border-radius:20px;
- border:1px solid rgba(233,222,189,.35);
- background:transparent;color:white;outline:none;font-size:9px;
-}
+.booking-form{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.booking-form input,.booking-form select,.booking-form textarea{width:100%;padding:11px 12px;border-radius:20px;border:1px solid #e9debd59;background:transparent;color:white;outline:none;font-size:9px}
 .booking-form input::placeholder,.booking-form textarea::placeholder{color:#c6c9b9}
 .booking-form select option{color:#222}
 .booking-form textarea{grid-column:1/-1;resize:vertical;min-height:38px}
-.booking-form button{
- grid-column:1/-1;background:#f7f1e4;color:var(--green);
- border:0;border-radius:22px;padding:12px;cursor:pointer;
- font-size:10px;font-weight:600;transition:.2s;
-}
-.booking-form button:hover{background:var(--gold2)}
-.booking-quote{
- text-align:center;color:#d8c48f;
- font:italic 15px/1.5 'Kalam',cursive;
-}
+.booking-form button{grid-column:1/-1;background:#f7f1e4;color:var(--green);border:0;border-radius:22px;padding:12px;cursor:pointer;font-size:10px;font-weight:600}
+.booking-quote{text-align:center;color:#d8c48f;font:italic 15px/1.5 'Kalam',cursive}
+
+/* CONTACT & MAP */
+.contact{padding:55px 0;background:#e9eadb}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}
+.contact p{font-size:11px;color:var(--muted);margin:12px 0}
+.map-frame{width:100%;height:260px;border:1px solid var(--gold)}
+.contact-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+
+/* SOCIAL */
+.social-section{padding:40px 0;text-align:center;background:#f8f3e8}
+.social-links{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:20px}
+.social-links a{border:1px solid var(--line);padding:11px 19px;border-radius:30px;color:var(--green);font-size:10px}
+.social-links a:hover{background:var(--green);color:white}
 
 /* FOOTER */
 footer{background:#f8f3e8;padding:30px 0 15px}
-.footer-grid{
- display:grid;grid-template-columns:1.1fr .9fr 1.3fr;
- gap:45px;padding-bottom:22px;
-}
+.footer-grid{display:grid;grid-template-columns:1.1fr .9fr 1.3fr;gap:45px;padding-bottom:22px}
 .footer-grid h3{font-size:11px;color:var(--green);margin-bottom:12px}
-.footer-grid p,.footer-grid a{
- display:block;font-size:9px;color:#77766b;line-height:2;
-}
+.footer-grid p,.footer-grid a{display:block;font-size:9px;color:#77766b;line-height:2}
 .footer-grid a:hover{color:var(--green)}
-.footer-bottom{
- border-top:1px solid var(--line);padding-top:12px;
- display:flex;justify-content:space-between;
- color:#999183;font-size:8px;
-}
+.footer-bottom{border-top:1px solid var(--line);padding-top:12px;display:flex;justify-content:space-between;color:#999183;font-size:8px}
 .socials{display:flex;gap:13px;margin-top:9px}
 .socials a{font-size:15px!important;color:var(--green)!important}
-.float-wa{
- position:fixed;right:22px;bottom:20px;z-index:30;
- width:52px;height:52px;border-radius:50%;
- display:grid;place-items:center;background:#247b3c;color:white;
- font-size:25px;box-shadow:0 4px 20px #0003;
- transition:.3s;
-}
+.float-wa{position:fixed;right:22px;bottom:20px;z-index:30;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;background:#247b3c;color:white;font-size:23px;box-shadow:0 4px 20px #0003;transition:.3s}
 .float-wa:hover{transform:scale(1.08)}
 
-/* ANIMATION */
-.reveal{opacity:0;transform:translateY(18px);transition:.7s ease}
-.reveal.show{opacity:1;transform:translateY(0)}
-@media(prefers-reduced-motion:reduce){
- .reveal{opacity:1;transform:none;transition:none}
- html{scroll-behavior:auto}
-}
-
-/* RESPONSIVE */
 @media(max-width:900px){
- .navlinks{gap:12px}
- .navlinks a{font-size:8px}
- .brand{min-width:180px}
+ .navlinks{gap:10px}.navlinks a{font-size:8px}
  .about-grid{gap:25px;grid-template-columns:1fr 1fr 120px}
- .feature-grid{gap:20px}
- .booking-grid{gap:20px}
+ .feature-grid{gap:20px}.booking-grid{gap:20px}
 }
 @media(max-width:700px){
- header{height:64px}
- .nav{width:90%}
- .brand{min-width:0}
- .brand-name{font-size:12px}
- .brand-name strong{font-size:15px}
+ header{height:64px}.nav{width:90%}
+ .brand{min-width:0}.brand-name{font-size:12px}.brand-name strong{font-size:15px}
  .brand-symbol{width:38px;height:38px}
  .menu{display:block}
- .navlinks{
-  display:none;position:absolute;top:64px;left:0;right:0;
-  background:#faf6ec;padding:22px 6%;
-  flex-direction:column;align-items:flex-start;
-  box-shadow:0 10px 15px #0001;
- }
- .navlinks.open{display:flex}
- .navlinks a{font-size:12px;padding:5px}
- .navlinks a.active:after{display:none}
+ .navlinks{display:none;position:absolute;top:64px;left:0;right:0;background:#faf6ec;padding:22px 6%;flex-direction:column;align-items:flex-start;box-shadow:0 10px 15px #0001}
+ .navlinks.open{display:flex}.navlinks a{font-size:12px;padding:5px}
  .hero{height:510px;min-height:510px}
- .hero-bg{
-  background:
-  linear-gradient(90deg,rgba(249,244,228,.9),rgba(249,244,228,.4)),
-  url('https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1000&q=85') center/cover;
- }
- .hero-inner{width:88%}
- .hero h1{font-size:67px}
+ .hero-bg{background:linear-gradient(90deg,#f9f4e6e8,#f9f4e666),url('https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1000&q=85') center/cover}
+ .hero-inner{width:88%}.hero h1{font-size:67px}
  .hero-note{right:7%;top:auto;bottom:25px;font-size:13px}
  .hero-flower{left:72%;top:29%;font-size:45px}
- .about{padding:40px 0}
- .about-grid{grid-template-columns:1fr 1fr;gap:25px}
- .about-copy{grid-column:1/-1}
- .about-copy p{max-width:100%}
- .arch-frame img{height:205px}
- .about-values{gap:12px;font-size:8px}
+ .about{padding:40px 0}.about-grid{grid-template-columns:1fr 1fr;gap:25px}
+ .about-copy{grid-column:1/-1}.about-copy p{max-width:100%}
+ .arch-frame img{height:205px}.about-values{gap:12px;font-size:8px}
  .path-grid{grid-template-columns:1fr 1fr;row-gap:27px}
- .path:nth-child(2):after{display:none}
- .path:not(:last-child):after{height:70px}
+ .path:nth-child(2):after{display:none}.path:not(:last-child):after{height:70px}
  .path{padding:0 8px}
- .feature{padding:30px 0}
- .feature-grid{grid-template-columns:1fr 1fr;gap:15px}
- .feature-image{grid-row:1;grid-column:1/-1}
- .feature-image img{height:150px}
- .feature-note{display:none}
- .feature h2{font-size:30px}
- .feature p{font-size:10px}
+ .feature{padding:30px 0}.feature-grid{grid-template-columns:1fr 1fr;gap:15px}
+ .feature-image{grid-row:1;grid-column:1/-1}.feature-image img{height:150px}
+ .feature-note{display:none}.feature h2{font-size:30px}
+ .course-details-grid{grid-template-columns:1fr;gap:15px}
  .healing-grid{grid-template-columns:1fr;gap:20px}
- .healing-image img{height:210px}
- .healing-options{gap:0}
- .healing-option{padding:5px 9px}
- .healing-option p{font-size:8px}
- .yoga-grid{grid-template-columns:1fr 1fr}
- .yoga-copy{padding:22px 0}
- .yoga-photo{height:180px}
+ .healing-image img{height:210px}.healing-options{gap:0}
+ .healing-option{padding:5px 9px}.healing-option p{font-size:8px}
+ .yoga-grid{grid-template-columns:1fr 1fr}.yoga-photo{height:180px}
  .yoga-types{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;padding:5px 0}
+ .schedule-row{grid-template-columns:.8fr 1fr;gap:10px}
+ .schedule-time{grid-column:2;text-align:left}
  .retreat-grid{grid-template-columns:1fr 1fr;gap:18px}
- .retreat-note{display:none}
- .retreat-img img{height:140px}
+ .retreat-note{display:none}.retreat-img img{height:140px}
  .retreat-copy h2{font-size:27px}
  .heritage-grid{grid-template-columns:1fr 1fr;gap:15px}
- .heritage-img{grid-column:1/-1;grid-row:2}
- .heritage-img img{height:130px}
+ .heritage-img{grid-column:1/-1;grid-row:2}.heritage-img img{height:130px}
  .heritage-links{grid-column:2;grid-row:1}
- .booking-grid{grid-template-columns:1fr;gap:22px}
- .booking-quote{display:none}
+ .resources-grid{grid-template-columns:1fr}
+ .booking-grid{grid-template-columns:1fr;gap:22px}.booking-quote{display:none}
  .booking-form{gap:8px}
+ .contact-grid{grid-template-columns:1fr}
+ .map-frame{height:230px}
  .footer-grid{grid-template-columns:1fr 1fr;gap:25px}
  .footer-grid>div:first-child{grid-column:1/-1}
  .footer-bottom{gap:10px;flex-direction:column}
@@ -454,6 +284,10 @@ footer{background:#f8f3e8;padding:30px 0 15px}
  .healing-options{grid-template-columns:1fr}
  .healing-option{border:0;border-top:1px solid var(--line);padding:12px 0}
  .healing-option:first-child{border-top:0}
+}
+@media(prefers-reduced-motion:reduce){
+ *,*::before,*::after{scroll-behavior:auto!important;transition:none!important}
+ .reveal{opacity:1;transform:none}
 }
 </style>
 </head>
@@ -470,7 +304,7 @@ footer{background:#f8f3e8;padding:30px 0 15px}
   </a>
   <button class="menu" id="menu" aria-label="Open menu">☰</button>
   <div class="navlinks" id="navlinks">
-   <a class="active" href="#home">Home</a>
+   <a href="#home">Home</a>
    <a href="#about">About Us</a>
    <a href="#course">Courses</a>
    <a href="#healing">Healing</a>
@@ -489,17 +323,11 @@ footer{background:#f8f3e8;padding:30px 0 15px}
  <div class="hero-bg"></div>
  <div class="hero-inner">
   <div class="eyebrow">Dhyana Naad Yogshala</div>
-  <h1>
-   <span>Discover the</span>
-   <span class="naad">Naad <span style="display:inline;color:#b99553;font-size:.7em">♧</span></span>
-   <span>within</span>
-  </h1>
-  <div class="hero-sub">Yoga&nbsp; | &nbsp;Naad&nbsp; | &nbsp;Dhyana&nbsp; | &nbsp;Adhyatma</div>
+  <h1><span>Discover the</span><span class="naad">Naad <span style="display:inline;color:#b99553;font-size:.7em">♧</span></span><span>within</span></h1>
+  <div class="hero-sub">Yoga | Naad | Dhyana | Adhyatma</div>
   <a href="#paths" class="btn filled">Explore Our Journey <span>→</span></a>
  </div>
- <div class="hero-note">Listen to<br>the silence...<br>it speaks<br>through Naad.
-  <div class="wave">〰♬〰</div>
- </div>
+ <div class="hero-note">Listen to<br>the silence...<br>it speaks<br>through Naad.<div class="wave">〰♬〰</div></div>
 </section>
 
 <!-- ABOUT -->
@@ -509,19 +337,14 @@ footer{background:#f8f3e8;padding:30px 0 15px}
    <div class="eyebrow">The essence</div>
    <h2>A journey into<br>awareness, harmony &<br>the beauty of being.</h2>
    <p>Dhyana Naad Yogshala is a sacred space where ancient wisdom, sound and mindful living come together. Our mission is to guide you towards inner peace, balance and self-discovery.</p>
-   <div class="mantra">ॐ ।। आत्मज्ञानं विमुक्तये ।।</div>
-   <br>
-   <a class="btn" href="#contact">Know More About Us <span>→</span></a>
+   <div class="mantra">ॐ ।। आत्मज्ञानं विमुक्तये ।।</div><br>
+   <a class="btn" href="#contact">Know More About Us →</a>
   </div>
   <div class="arch-frame reveal">
-   <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=900&q=85" alt="Peaceful yoga space">
+   <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?auto=format&fit=crop&w=900&q=85" alt="Yoga space">
   </div>
   <div class="about-values">
-   <span>TRADITION</span>
-   <span>PRACTICE</span>
-   <span>HEALING</span>
-   <span>TRANSFORMATION</span>
-   <span>♧</span>
+   <span>TRADITION</span><span>PRACTICE</span><span>HEALING</span><span>TRANSFORMATION</span><span>♧</span>
   </div>
  </div>
 </section>
@@ -532,31 +355,15 @@ footer{background:#f8f3e8;padding:30px 0 15px}
   <div class="eyebrow">Our paths</div>
   <h2>Explore your <em>inner journey.</em></h2>
   <div class="path-grid">
-   <div class="path reveal">
-    <div class="path-icon">♧</div>
-    <h3>Yoga</h3>
-    <p>Build strength, balance and inner peace.</p>
-   </div>
-   <div class="path reveal">
-    <div class="path-icon">♬</div>
-    <h3>Naad</h3>
-    <p>Experience the healing power of sound.</p>
-   </div>
-   <div class="path reveal">
-    <div class="path-icon">♧</div>
-    <h3>Dhyana</h3>
-    <p>Discover stillness within.</p>
-   </div>
-   <div class="path reveal">
-    <div class="path-icon">☼</div>
-    <h3>Bhakti</h3>
-    <p>Open the heart through devotion.</p>
-   </div>
+   <div class="path reveal"><div class="path-icon">♧</div><h3>Yoga</h3><p>Build strength, balance and inner peace.</p></div>
+   <div class="path reveal"><div class="path-icon">♬</div><h3>Naad</h3><p>Experience the healing power of sound.</p></div>
+   <div class="path reveal"><div class="path-icon">♧</div><h3>Dhyana</h3><p>Discover stillness within.</p></div>
+   <div class="path reveal"><div class="path-icon">☼</div><h3>Bhakti</h3><p>Open the heart through devotion.</p></div>
   </div>
  </div>
 </section>
 
-<!-- FEATURE COURSE -->
+<!-- SOUND HEALING COURSE -->
 <section class="feature" id="course">
  <div class="container feature-grid">
   <div class="feature-image reveal">
@@ -565,19 +372,38 @@ footer{background:#f8f3e8;padding:30px 0 15px}
   <div class="reveal">
    <div class="eyebrow">Featured course</div>
    <h2>Sound Healing<br><em>Level 1 – 4 Day Course</em></h2>
-   <p>Learn the fundamentals of sound, vibration and traditional healing instruments.</p>
+   <p>Explore the fundamentals of sound, vibration and traditional healing instruments.</p>
    <ul>
     <li>Sound & Vibration</li>
     <li>Traditional Instruments</li>
     <li>Guided Practice</li>
     <li>Mindful Listening</li>
    </ul>
-   <a href="https://wa.me/919557614064?text=Hello%2C%20I%20want%20details%20about%20the%20Sound%20Healing%20Course." class="btn">View Course Details <span>→</span></a>
+   <a href="#course-info" class="btn">Explore Course Details →</a>
   </div>
-  <div class="feature-note">
-   <div class="wave">〰 ♬ 〰</div>
-   <p>Feel<br>the vibration.<br>Heal from<br>within.</p>
-   <div>♧</div>
+  <div class="feature-note"><div class="wave">〰 ♬ 〰</div><p>Feel the vibration.<br>Heal from within.</p></div>
+ </div>
+</section>
+
+<section class="course-details" id="course-info">
+ <div class="container course-details-grid">
+  <div class="reveal">
+   <div class="eyebrow">Learn the art of Naad</div>
+   <h2>Sound Healing <em>Course.</em></h2>
+   <p>Interested in learning about sound healing? Contact Dhyana Naad Yogshala for the course brochure, batch information, fees and registration details.</p>
+   <div class="course-points">
+    <div class="course-point"><strong>Level 1</strong><span>Course level</span></div>
+    <div class="course-point"><strong>4 Days</strong><span>Course duration</span></div>
+    <div class="course-point"><strong>Sound & Vibration</strong><span>Course focus</span></div>
+    <div class="course-point"><strong>Guided Practice</strong><span>Learning experience</span></div>
+   </div>
+   <div class="course-actions">
+    <a class="btn filled" href="https://wa.me/919557614064?text=Namaste%2C%20please%20share%20the%20Sound%20Healing%20Course%20brochure%20and%20details.">Request Course Brochure ↗</a>
+    <a class="btn" href="#booking">Enquire Now</a>
+   </div>
+  </div>
+  <div class="arch-frame reveal">
+   <img src="https://images.unsplash.com/photo-1518609878373-06d740f60d8b?auto=format&fit=crop&w=900&q=85" alt="Sound healing instruments">
   </div>
  </div>
 </section>
@@ -593,22 +419,9 @@ footer{background:#f8f3e8;padding:30px 0 15px}
    <h2>Restore Your Natural <em>Balance.</em></h2>
    <p>Choose from one-to-one, group or distance healing sessions.</p>
    <div class="healing-options">
-    <div class="healing-option">
-     <div class="ico">♧</div>
-     <h3>One-to-One</h3>
-     <p>Personalised sound journey for your unique needs.</p>
-     <a href="#booking">Book a Session →</a>
-    </div>
-    <div class="healing-option">
-     <div class="ico">❀</div>
-     <h3>Group Healing</h3>
-     <p>Share the experience with like-minded souls.</p>
-    </div>
-    <div class="healing-option">
-     <div class="ico">♧</div>
-     <h3>Distance Healing</h3>
-     <p>Guided remote session from your space.</p>
-    </div>
+    <div class="healing-option"><div class="ico">♧</div><h3>One-to-One</h3><p>Personalised sound journey for your unique needs.</p><a href="#booking">Book a Session →</a></div>
+    <div class="healing-option"><div class="ico">❀</div><h3>Group Healing</h3><p>Share the experience with like-minded souls.</p><a href="#booking">Enquire →</a></div>
+    <div class="healing-option"><div class="ico">♧</div><h3>Distance Healing</h3><p>Guided remote session from your space.</p><a href="#booking">Enquire →</a></div>
    </div>
   </div>
  </div>
@@ -621,20 +434,30 @@ footer{background:#f8f3e8;padding:30px 0 15px}
    <div class="eyebrow">Yoga classes</div>
    <h2>Move. Breathe. Be.</h2>
    <p>Join our Basic Yoga and Bhakti Yoga classes for a more mindful and meaningful life.</p>
-   <a class="btn" href="#booking">Explore Yoga Classes <span>→</span></a>
+   <a class="btn" href="#schedule">Explore Yoga Classes →</a>
   </div>
-  <div class="yoga-photo">
-   <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1000&q=85" alt="Yoga by the lake">
-  </div>
+  <div class="yoga-photo"><img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=1000&q=85" alt="Yoga by the lake"></div>
   <div class="yoga-types">
-   <div class="yoga-type">
-    <div class="ico">♧</div>
-    <div><strong>Basic Yoga</strong><small>Build a strong foundation</small></div>
-   </div>
-   <div class="yoga-type">
-    <div class="ico">☼</div>
-    <div><strong>Bhakti Yoga</strong><small>Connect through devotion</small></div>
-   </div>
+   <div class="yoga-type"><div class="ico">♧</div><div><strong>Basic Yoga</strong><small>Build a strong foundation</small></div></div>
+   <div class="yoga-type"><div class="ico">☼</div><div><strong>Bhakti Yoga</strong><small>Connect through devotion</small></div></div>
+  </div>
+ </div>
+</section>
+
+<!-- WEEKLY TIMETABLE -->
+<section class="schedule" id="schedule">
+ <div class="container">
+  <div class="schedule-head reveal">
+   <div class="eyebrow">Plan your practice</div>
+   <h2>Our Weekly <em>Schedule.</em></h2>
+   <p>Choose a time for your yoga and sound healing practice.</p>
+  </div>
+  <div class="schedule-list reveal">
+   <div class="schedule-row"><div class="schedule-day">Morning</div><div class="schedule-type">Yoga Classes</div><div class="schedule-time">05:00 – 06:00 AM<br>06:00 – 07:00 AM</div></div>
+   <div class="schedule-row"><div class="schedule-day">Afternoon</div><div class="schedule-type">Sound Healing</div><div class="schedule-time">10:00 AM – 12:00 PM<br>03:00 – 05:00 PM</div></div>
+   <div class="schedule-row"><div class="schedule-day">Evening</div><div class="schedule-type">Yoga Classes</div><div class="schedule-time">05:00 – 06:00 PM</div></div>
+   <div class="schedule-row"><div class="schedule-day">Wednesday</div><div class="schedule-type">Cleansing Activities</div><div class="schedule-time">Contact us for details</div></div>
+   <div class="schedule-row"><div class="schedule-day">Saturday</div><div class="schedule-type">Yoga + Sound Healing</div><div class="schedule-time">05:30 – 06:30 AM</div></div>
   </div>
  </div>
 </section>
@@ -642,34 +465,27 @@ footer{background:#f8f3e8;padding:30px 0 15px}
 <!-- RETREATS -->
 <section class="retreat" id="retreats">
  <div class="container retreat-grid">
-  <div class="retreat-img reveal">
-   <img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=900&q=85" alt="Mountain retreat">
-  </div>
+  <div class="retreat-img reveal"><img src="https://images.unsplash.com/photo-1510798831971-661eb04b3739?auto=format&fit=crop&w=900&q=85" alt="Mountain retreat"></div>
   <div class="retreat-copy reveal">
    <div class="eyebrow">Workshops & retreats</div>
    <h2>Gather. Learn. <em>Reconnect.</em></h2>
-   <p>Join our upcoming workshops, retreats and special events designed for deeper learning and inner transformation.</p>
-   <a class="btn" href="https://wa.me/919557614064?text=Hello%2C%20please%20share%20upcoming%20workshops%20and%20retreats." >View Upcoming Events <span>→</span></a>
+   <p>Join our workshops, retreats and special events designed for deeper learning and inner transformation.</p>
+   <a class="btn" href="https://wa.me/919557614064?text=Namaste%2C%20please%20share%20upcoming%20workshops%20and%20retreats.">Enquire About Events →</a>
   </div>
-  <div class="retreat-note">
-   Nature heals.<br>Satsang inspires.<br>Together we grow.
-   <div><span>♧</span></div>
-  </div>
+  <div class="retreat-note">Nature heals.<br>Satsang inspires.<br>Together we grow.</div>
  </div>
 </section>
 
-<!-- HERITAGE -->
+<!-- SPIRITUAL CLASSES -->
 <section class="heritage" id="heritage">
  <div class="container heritage-grid">
   <div class="reveal">
    <div class="eyebrow">Heritage classes</div>
    <h2>Wisdom for Daily Life.</h2>
-   <p>Explore spiritual concepts and traditional knowledge through online & offline theory classes.</p>
-   <a class="btn" href="https://wa.me/919557614064?text=Hello%2C%20I%20want%20to%20know%20about%20spiritual%20classes.">Learn More <span>→</span></a>
+   <p>Explore spiritual concepts and traditional knowledge through online and offline theory classes.</p>
+   <a class="btn" href="https://wa.me/919557614064?text=Namaste%2C%20I%20would%20like%20to%20know%20about%20spiritual%20classes.">Learn More →</a>
   </div>
-  <div class="heritage-img">
-   <img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=900&q=85" alt="Books and learning">
-  </div>
+  <div class="heritage-img"><img src="https://images.unsplash.com/photo-1497633762265-9d179a990aa6?auto=format&fit=crop&w=900&q=85" alt="Books and learning"></div>
   <div class="heritage-links">
    <a href="https://wa.me/919557614064?text=I%20am%20interested%20in%20online%20classes.">▣ &nbsp; Online Classes</a>
    <a href="https://wa.me/919557614064?text=I%20am%20interested%20in%20offline%20classes.">♧ &nbsp; Offline Classes</a>
@@ -677,7 +493,49 @@ footer{background:#f8f3e8;padding:30px 0 15px}
  </div>
 </section>
 
-<!-- BOOKING -->
+<!-- YOUTUBE VIDEO: replace VIDEO_ID with the actual YouTube video ID -->
+<section class="video-section" id="videos">
+ <div class="container">
+  <div class="eyebrow">Experience Dhyana Naad</div>
+  <h2>Watch. Listen. <em>Experience.</em></h2>
+  <p>Explore the world of yoga, sound and mindful living through our videos.</p>
+  <div class="video-placeholder">
+   <a class="play-button" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="Watch video">▶</a>
+  </div>
+  <p class="video-caption">DHYANA NAAD YOGSHALA · VIDEO GALLERY</p>
+ </div>
+</section>
+
+<!-- REVIEWS: add verified student testimonials here -->
+<section class="reviews" id="reviews">
+ <div class="container">
+  <div class="eyebrow">Community & experiences</div>
+  <h2>Words from the <em>journey.</em></h2>
+  <p>Every person's experience is unique. Explore genuine feedback from our students and visitors.</p>
+  <div class="review-note">Your experience matters. Share your feedback with Dhyana Naad Yogshala.</div>
+  <a class="btn" href="https://wa.me/919557614064?text=Namaste%2C%20I%20would%20like%20to%20share%20my%20experience.">Share Your Experience →</a>
+ </div>
+</section>
+
+<!-- BROCHURE & PAYMENT -->
+<section class="resources" id="resources">
+ <div class="container resources-grid">
+  <div class="resource-card reveal" id="brochure">
+   <div class="eyebrow">Course resources</div>
+   <h3>Sound Healing Brochure</h3>
+   <p>Request the official course brochure, curriculum, batch dates and registration information directly from the Yogshala.</p>
+   <a class="btn" href="https://wa.me/919557614064?text=Please%20share%20the%20official%20Sound%20Healing%20Course%20brochure.">Request Brochure →</a>
+  </div>
+  <div class="resource-card reveal" id="payment">
+   <div class="eyebrow">Course registration</div>
+   <h3>Payment & Enrolment</h3>
+   <p>For current course fees, payment methods and enrolment instructions, please contact the Yogshala directly.</p>
+   <a class="btn" href="https://wa.me/919557614064?text=Please%20share%20the%20course%20fees%20and%20official%20payment%20details.">Ask for Payment Details →</a>
+  </div>
+ </div>
+</section>
+
+<!-- WHATSAPP BOOKING FORM -->
 <section class="booking" id="booking">
  <div class="container booking-grid">
   <div class="booking-copy">
@@ -693,57 +551,84 @@ footer{background:#f8f3e8;padding:30px 0 15px}
     <option value="">Select Service</option>
     <option>Basic Yoga</option>
     <option>Bhakti Yoga</option>
-    <option>Sound Healing</option>
+    <option>Sound Healing Session</option>
     <option>One-to-One Healing</option>
     <option>Group Healing</option>
-    <option>Sound Healing Course</option>
+    <option>Distance Healing</option>
+    <option>Sound Healing Level 1 Course</option>
     <option>Spiritual Classes</option>
     <option>Workshop / Retreat</option>
    </select>
    <input id="date" type="date" aria-label="Preferred Date">
    <textarea id="message" placeholder="Message (optional)"></textarea>
-   <button type="submit">Send on WhatsApp &nbsp; →</button>
+   <button type="submit">Send on WhatsApp →</button>
   </form>
-  <div class="booking-quote">
-   Not just a class,<br>but a connection<br>to yourself.
-   <div style="margin-top:15px;color:#d1b16d">— ◇ —</div>
+  <div class="booking-quote">Not just a class,<br>but a connection<br>to yourself.</div>
+ </div>
+</section>
+
+<!-- CONTACT AND LOCATION -->
+<section class="contact" id="contact">
+ <div class="container contact-grid">
+  <div class="reveal">
+   <div class="eyebrow">Visit our Yogshala</div>
+   <h2>Find your way to <em>us.</em></h2>
+   <p><strong>Dhyana Bhandari</strong><br>Founder & Yoga Guide</p>
+   <p>Top Floor, Shree Ji Tower,<br>Near Doon University Chowk,<br>Mothrowala, Dehradun,<br>Uttarakhand – 248001</p>
+   <p><strong>Phone:</strong> +91 95576 14064</p>
+   <div class="contact-actions">
+    <a class="btn filled" href="tel:+919557614064">Call Us ↗</a>
+    <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Shree+Ji+Tower+Near+Doon+University+Chowk+Mothrowala+Dehradun">Get Directions ↗</a>
+   </div>
   </div>
+  <iframe class="map-frame" title="Dhyana Naad Yogshala location" loading="lazy" src="https://maps.google.com/maps?q=Shree%20Ji%20Tower%20Near%20Doon%20University%20Chowk%20Mothrowala%20Dehradun&t=&z=14&ie=UTF8&iwloc=&output=embed"></iframe>
+ </div>
+</section>
+
+<!-- SOCIAL MEDIA: replace placeholder links with official profile URLs -->
+<section class="social-section" id="social">
+ <div class="container">
+  <div class="eyebrow">Stay connected</div>
+  <h2>Follow the <em>journey.</em></h2>
+  <p style="font-size:11px;color:var(--muted);margin-top:10px">Connect with Dhyana Naad Yogshala on social media.</p>
+  <div class="social-links">
+   <!-- Replace # with the official Instagram URL -->
+   <a href="#" target="_blank" rel="noopener">Instagram ↗</a>
+   <!-- Replace # with the official Facebook URL -->
+   <a href="#" target="_blank" rel="noopener">Facebook ↗</a>
+   <!-- Replace # with the official YouTube channel URL -->
+   <a href="#" target="_blank" rel="noopener">YouTube ↗</a>
+   <a href="https://wa.me/919557614064">WhatsApp ↗</a>
+  </div>
+  <p style="margin-top:20px;font-size:10px;color:var(--muted)">For joining official WhatsApp groups, contact the Yogshala and request an invitation.</p>
+  <a class="btn" href="https://wa.me/919557614064?text=Namaste%2C%20please%20share%20the%20official%20WhatsApp%20group%20invitation.">Request WhatsApp Group Invite →</a>
  </div>
 </section>
 
 <!-- FOOTER -->
-<footer id="contact">
+<footer>
  <div class="container">
   <div class="footer-grid">
    <div>
     <a href="#home" class="brand">
      <div class="brand-symbol">ॐ</div>
-     <div class="brand-name">Dhyana <strong>Naad</strong> Yogshala
-      <small>॥ आत्मज्ञानं विमुक्तये ॥</small>
-     </div>
+     <div class="brand-name">Dhyana <strong>Naad</strong> Yogshala<small>॥ आत्मज्ञानं विमुक्तये ॥</small></div>
     </a>
     <p style="margin-top:12px">A space for yoga, sound, awareness and inner discovery.</p>
     <div class="socials">
-     <a href="#" aria-label="Instagram">◎</a>
-     <a href="#" aria-label="Facebook">f</a>
-     <a href="#" aria-label="YouTube">▶</a>
+     <a href="#social">◎</a><a href="#social">f</a><a href="#social">▶</a>
     </div>
    </div>
    <div>
     <h3>Quick Links</h3>
-    <a href="#home">Home</a>
-    <a href="#about">About Us</a>
-    <a href="#course">Courses</a>
-    <a href="#healing">Healing</a>
-    <a href="#yoga">Yoga</a>
-    <a href="#retreats">Retreats</a>
-    <a href="#heritage">Spiritual Classes</a>
+    <a href="#home">Home</a><a href="#about">About Us</a>
+    <a href="#course">Courses</a><a href="#healing">Healing</a>
+    <a href="#yoga">Yoga</a><a href="#retreats">Retreats</a>
+    <a href="#heritage">Spiritual Classes</a><a href="#reviews">Reviews</a>
    </div>
    <div>
     <h3>Get in Touch</h3>
-    <p>⌖ &nbsp; Top Floor, Shree Ji Tower,<br>
-    &nbsp;&nbsp;&nbsp;&nbsp; Near Doon University Chowk,<br>
-    &nbsp;&nbsp;&nbsp;&nbsp; Mothrowala, Dehradun, Uttarakhand – 248001</p>
+    <p>⌖ &nbsp; Top Floor, Shree Ji Tower,<br>&nbsp;&nbsp;&nbsp;&nbsp; Near Doon University Chowk,<br>&nbsp;&nbsp;&nbsp;&nbsp; Mothrowala, Dehradun, Uttarakhand – 248001</p>
     <p>☎ &nbsp; +91 95576 14064</p>
     <a href="https://wa.me/919557614064">WhatsApp Us →</a>
    </div>
@@ -766,14 +651,13 @@ menu.addEventListener('click',()=>{
  menu.textContent=navlinks.classList.contains('open')?'×':'☰';
 });
 
-document.querySelectorAll('.navlinks a').forEach(a=>{
- a.addEventListener('click',()=>{
+document.querySelectorAll('.navlinks a').forEach(link=>{
+ link.addEventListener('click',()=>{
   navlinks.classList.remove('open');
   menu.textContent='☰';
  });
 });
 
-// Reveal on scroll
 const revealObserver=new IntersectionObserver(entries=>{
  entries.forEach(entry=>{
   if(entry.isIntersecting){
@@ -785,7 +669,6 @@ const revealObserver=new IntersectionObserver(entries=>{
 
 document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
 
-// WhatsApp booking form
 document.getElementById('bookingForm').addEventListener('submit',function(e){
  e.preventDefault();
 
@@ -801,15 +684,15 @@ document.getElementById('bookingForm').addEventListener('submit',function(e){
  }
 
  const text=
- `Namaste Dhyana Naad Yogshala 🙏%0A%0A`+
- `I would like to book a session.%0A%0A`+
- `Name: ${encodeURIComponent(name)}%0A`+
- `Phone: ${encodeURIComponent(phone)}%0A`+
- `Service: ${encodeURIComponent(service)}%0A`+
- `Preferred Date: ${encodeURIComponent(date||'Not specified')}%0A`+
- `Message: ${encodeURIComponent(message||'None')}`;
+ `Namaste Dhyana Naad Yogshala 🙏\n\n`+
+ `I would like to enquire about a session.\n\n`+
+ `Name: ${name}\n`+
+ `Phone: ${phone}\n`+
+ `Service: ${service}\n`+
+ `Preferred Date: ${date||'Not specified'}\n`+
+ `Message: ${message||'None'}`;
 
- window.open('https://wa.me/919557614064?text='+text,'_blank');
+ window.open('https://wa.me/919557614064?text='+encodeURIComponent(text),'_blank');
 });
 </script>
 </body>
