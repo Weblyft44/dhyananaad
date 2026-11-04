@@ -1,0 +1,836 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0b0b09">
+<title>Dhyana Naad — The Art of Inner Harmony</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --black:#0b0b09;
+  --panel:#12120f;
+  --gold:#c5a36b;
+  --gold2:#e5c995;
+  --cream:#eee8dc;
+  --muted:#99958a;
+  --serif:'Cormorant Garamond',serif;
+  --sans:'DM Sans',sans-serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{background:var(--black);color:var(--cream);font-family:var(--sans);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+button{font:inherit}
+img{display:block;width:100%;object-fit:cover}
+::selection{background:var(--gold);color:#111}
+
+.cursor-glow{
+position:fixed;width:300px;height:300px;border-radius:50%;
+background:radial-gradient(circle,#c5a36b12,transparent 70%);
+pointer-events:none;z-index:0;transform:translate(-50%,-50%);
+}
+
+.preloader{
+position:fixed;inset:0;z-index:9999;background:var(--black);
+display:flex;align-items:center;justify-content:center;flex-direction:column;
+transition:opacity .8s,visibility .8s;
+}
+.preloader.hide{opacity:0;visibility:hidden}
+.loader-logo{font:300 52px var(--serif);color:var(--gold)}
+.loader-sub{font-size:8px;letter-spacing:5px;margin-top:12px;color:#aaa}
+
+.topline{
+height:34px;border-bottom:1px solid #ffffff12;
+display:flex;justify-content:space-between;align-items:center;
+padding:0 6%;font-size:8px;letter-spacing:2px;color:#aaa;
+}
+.topline span:nth-child(2){color:var(--gold)}
+
+header{
+height:88px;padding:0 6%;display:flex;align-items:center;
+justify-content:space-between;position:sticky;top:0;z-index:1000;
+background:#0b0b09ed;backdrop-filter:blur(20px);
+border-bottom:1px solid #ffffff0d;transition:.4s;
+}
+header.scrolled{height:70px}
+
+.logo{display:flex;align-items:center;gap:12px}
+.logo-mark{
+width:43px;height:43px;border:1px solid var(--gold);
+border-radius:50%;display:grid;place-items:center;
+color:var(--gold);font:25px var(--serif);
+}
+.logo-text{font:25px var(--serif);letter-spacing:1px}
+.logo-text small{display:block;font:7px var(--sans);letter-spacing:3px;color:var(--gold);margin-top:3px}
+
+nav{display:flex;align-items:center;gap:30px}
+nav a{font-size:9px;letter-spacing:1px;color:#ccc;transition:.3s}
+nav a:hover{color:var(--gold)}
+.nav-cta{border:1px solid #c5a36b;padding:14px 19px;color:var(--gold)}
+
+.menu{display:none;background:none;border:0;color:var(--gold);font-size:25px;cursor:pointer}
+
+/* HERO */
+
+.hero{
+min-height:760px;height:calc(100svh - 122px);max-height:900px;
+position:relative;display:flex;align-items:center;overflow:hidden;
+background:#0b0b09;
+}
+.hero-photo{
+position:absolute;inset:0;
+background:url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=2000&q=90') center/cover;
+opacity:.38;filter:saturate(.45);
+animation:zoom 22s infinite alternate;
+}
+.hero-shade{
+position:absolute;inset:0;
+background:linear-gradient(90deg,#090a08 5%,#090a08d9 42%,#090a0880 75%,#090a0850);
+}
+.hero-content{position:relative;z-index:3;padding:60px 10%;max-width:1000px}
+.kicker{font-size:9px;letter-spacing:5px;color:var(--gold);margin-bottom:30px}
+.hero h1{
+font:300 clamp(68px,10vw,145px)/.78 var(--serif);
+letter-spacing:-4px;
+}
+.hero h1 span{display:block}
+.hero h1 .gold{color:var(--gold);font-style:italic;margin-left:9vw}
+.hero-desc{
+max-width:390px;font-size:12px;line-height:2;color:#c0bdb3;
+margin:38px 0 32px 9vw;
+}
+.hero-actions{display:flex;align-items:center;gap:25px;margin-left:9vw;flex-wrap:wrap}
+.gold-btn{
+display:inline-flex;align-items:center;gap:22px;
+padding:17px 22px;background:var(--gold);color:#15140f;
+font-size:9px;letter-spacing:1px;font-weight:600;transition:.3s;
+}
+.gold-btn:hover{background:var(--gold2);transform:translateY(-4px)}
+.simple-link{font-size:9px;letter-spacing:1px;color:#eee;border-bottom:1px solid var(--gold);padding-bottom:7px}
+
+.hero-side{
+position:absolute;right:5%;top:50%;transform:translateY(-50%);
+writing-mode:vertical-rl;font-size:8px;letter-spacing:4px;color:#b8a27c;
+}
+.hero-bottom{
+position:absolute;bottom:30px;left:6%;right:6%;
+display:flex;justify-content:space-between;
+font-size:8px;letter-spacing:2px;color:#a8a49b;
+}
+.hero-bottom span:last-child{color:var(--gold)}
+
+/* SOUND VISUAL */
+
+.orbit{
+position:absolute;right:9%;top:50%;transform:translateY(-50%);
+width:min(32vw,410px);aspect-ratio:1;border-radius:50%;
+border:1px solid #c5a36b32;z-index:2;
+display:grid;place-items:center;
+}
+.orbit:before,.orbit:after{
+content:"";position:absolute;border:1px solid #c5a36b24;border-radius:50%;
+inset:12%;
+}
+.orbit:after{inset:26%;border-color:#c5a36b45}
+.orbit-core{
+width:35%;height:35%;border-radius:50%;
+background:radial-gradient(circle,#d9b87950,#c5a36b05 70%);
+box-shadow:0 0 90px #c5a36b20;
+display:grid;place-items:center;color:var(--gold);
+font:60px var(--serif);
+}
+.orbit-ring{
+position:absolute;inset:5%;border:1px solid transparent;
+border-top-color:var(--gold);border-radius:50%;
+animation:rotate 18s linear infinite;
+}
+.orbit-ring.two{inset:-5%;border-top-color:#ffffff38;animation-duration:28s;animation-direction:reverse}
+
+/* INTRO */
+
+.section{padding:120px 9%;position:relative}
+.eyebrow{font-size:8px;letter-spacing:4px;color:var(--gold);display:block;margin-bottom:23px}
+.heading{font:400 clamp(45px,6vw,78px)/.95 var(--serif);letter-spacing:-1px}
+.heading em{color:var(--gold);font-weight:300}
+.intro{text-align:center;background:var(--cream);color:var(--black);padding:135px 10%}
+.intro .eyebrow{color:#997747}
+.intro p{max-width:650px;margin:30px auto 0;font-size:12px;line-height:2.2;color:#68665e}
+.intro .heading em{color:#a27e49}
+.intro-symbol{font:45px var(--serif);color:#b08c55;margin-bottom:20px}
+
+/* EDITORIAL ABOUT */
+
+.about{
+display:grid;grid-template-columns:1.05fr .95fr;
+min-height:650px;background:var(--panel);
+}
+.about-visual{position:relative;min-height:600px;overflow:hidden}
+.about-visual img{height:100%;position:absolute;inset:0;filter:brightness(.72) saturate(.65)}
+.about-number{
+position:absolute;bottom:35px;left:35px;
+font:100px var(--serif);color:#ffffff8a;line-height:1;
+}
+.about-text{align-self:center;padding:90px 13%}
+.about-text p{font-size:12px;line-height:2.2;color:#aaa79e;margin-top:25px}
+.signature{font:italic 35px var(--serif);color:var(--gold);margin-top:35px}
+.about-caption{font-size:8px;letter-spacing:3px;color:#888;margin-top:5px}
+
+/* EXPERIENCES */
+
+.experiences{background:#10100d}
+.section-head{text-align:center;margin-bottom:65px}
+.section-head p{font-size:11px;color:#999;margin-top:20px;line-height:2}
+
+.experience-layout{
+display:grid;grid-template-columns:1fr 1fr;gap:20px;
+}
+.exp{
+position:relative;min-height:460px;overflow:hidden;
+background:#191915;
+}
+.exp:first-child{grid-row:span 2;min-height:940px}
+.exp img{position:absolute;inset:0;width:100%;height:100%;transition:1s;filter:brightness(.55) saturate(.65)}
+.exp:hover img{transform:scale(1.06);filter:brightness(.7) saturate(.8)}
+.exp:after{
+content:"";position:absolute;inset:0;
+background:linear-gradient(0deg,#090a08ed,transparent 65%);
+}
+.exp-content{position:absolute;z-index:2;bottom:35px;left:35px;right:30px}
+.exp-index{font-size:8px;letter-spacing:3px;color:var(--gold)}
+.exp h3{font:400 clamp(35px,4vw,55px)/1 var(--serif);margin:14px 0}
+.exp p{font-size:11px;line-height:1.9;color:#c0bdb4;max-width:370px}
+.exp a{display:inline-block;margin-top:22px;color:var(--gold);font-size:9px;letter-spacing:2px;border-bottom:1px solid #c5a36b;padding-bottom:7px}
+
+/* SOUND EXPERIENCE */
+
+.sound-section{
+background:#eae4d8;color:#181813;
+display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:60px;
+overflow:hidden;
+}
+.sound-copy p{font-size:12px;line-height:2.2;color:#6d695f;margin-top:25px;max-width:440px}
+.sound-art{
+min-height:430px;display:grid;place-items:center;position:relative;
+}
+.sound-circle{
+width:min(35vw,360px);aspect-ratio:1;border-radius:50%;
+border:1px solid #a98a5a;position:relative;display:grid;place-items:center;
+}
+.sound-circle:before,.sound-circle:after{
+content:"";position:absolute;inset:12%;border:1px solid #a98a5a80;border-radius:50%;
+}
+.sound-circle:after{inset:25%;border-color:#a98a5a}
+.sound-center{
+width:42%;height:42%;border-radius:50%;
+background:radial-gradient(circle,#d2ad70,#927247);
+box-shadow:0 0 75px #a7834b50;
+}
+.sound-circle .ring{
+position:absolute;inset:-8%;border:1px solid #a98a5a44;border-radius:50%;
+animation:pulse 4s infinite;
+}
+.sound-circle .ring:nth-child(2){inset:-18%;animation-delay:1s}
+.sound-circle .ring:nth-child(3){inset:-28%;animation-delay:2s}
+
+/* QUOTE */
+
+.quote{
+padding:130px 15%;text-align:center;
+background:linear-gradient(#0b0b09ed,#0b0b09ed),url('https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1600&q=80') center/cover;
+}
+.quote-mark{font:100px var(--serif);color:var(--gold);height:65px}
+.quote blockquote{font:400 clamp(38px,5.5vw,68px)/1.12 var(--serif)}
+.quote small{display:block;color:var(--gold);letter-spacing:4px;font-size:8px;margin-top:30px}
+
+/* SCHEDULE */
+
+.schedule{background:#14140f}
+.schedule-panel{max-width:900px;margin:60px auto 0;border-top:1px solid #c5a36b70}
+.schedule-head{padding:25px 0;display:flex;justify-content:space-between;align-items:center}
+.schedule-head h3{font:400 38px var(--serif)}
+.schedule-head span{font-size:9px;color:var(--gold)}
+.schedule-row{
+display:grid;grid-template-columns:1fr 1fr;align-items:center;
+padding:28px 15px;border-top:1px solid #ffffff19;transition:.3s;
+}
+.schedule-row:hover{background:#ffffff06;padding-left:25px}
+.schedule-row h4{font:400 29px var(--serif)}
+.schedule-row small{font-size:8px;letter-spacing:2px;color:var(--gold)}
+.schedule-times{text-align:right;font-size:11px;line-height:2;color:#d2cec4}
+.saturday{
+margin-top:30px;padding:35px;text-align:center;background:var(--gold);color:#15140f;
+}
+.saturday h3{font:400 39px var(--serif);margin:10px}
+.saturday span{font-size:10px;letter-spacing:2px}
+.schedule-note{text-align:center;color:#888;font-size:9px;margin-top:25px;line-height:1.8}
+
+/* COURSE */
+
+.course{
+display:grid;grid-template-columns:1fr 1fr;background:#1a2018;
+}
+.course-img{min-height:650px;overflow:hidden}
+.course-img img{height:100%;min-height:650px;filter:brightness(.7) saturate(.65)}
+.course-copy{padding:100px 12%;align-self:center}
+.course-copy p{font-size:12px;color:#aaa;line-height:2.2;margin:25px 0}
+.course-copy .heading em{color:var(--gold2)}
+
+/* GALLERY */
+
+.gallery{background:var(--cream);color:#171711}
+.gallery .eyebrow{color:#997747}
+.gallery-grid{
+display:grid;grid-template-columns:1.3fr 1fr 1fr;
+grid-template-rows:230px 230px;gap:12px;margin-top:55px;
+}
+.gallery-grid div{overflow:hidden}
+.gallery-grid img{height:100%;transition:.8s;filter:saturate(.7)}
+.gallery-grid div:hover img{transform:scale(1.07)}
+.gallery-grid div:first-child{grid-row:span 2}
+
+/* CONTACT */
+
+.contact{
+background:#11120e;padding:110px 9%;
+display:grid;grid-template-columns:1fr 1fr;gap:60px;
+}
+.contact-copy p{color:#aaa;font-size:12px;line-height:2;margin:25px 0}
+.contact-info{display:flex;flex-direction:column;gap:30px;justify-content:center}
+.contact-item{padding-bottom:24px;border-bottom:1px solid #ffffff19}
+.contact-item small{display:block;font-size:8px;letter-spacing:3px;color:var(--gold);margin-bottom:12px}
+.contact-item p,.contact-item a{font-size:12px;line-height:2;color:#ddd}
+.contact-item a:hover{color:var(--gold)}
+.social{display:flex;gap:22px;flex-wrap:wrap}
+
+/* FOOTER */
+
+footer{
+padding:40px 7%;background:#080806;
+display:flex;align-items:center;justify-content:space-between;
+gap:20px;flex-wrap:wrap;font-size:9px;color:#89877f;
+}
+.footer-brand{font:27px var(--serif);color:var(--gold)}
+.credit strong{letter-spacing:3px;color:var(--gold)}
+
+/* WHATSAPP */
+
+.whatsapp{
+position:fixed;right:25px;bottom:25px;width:53px;height:53px;
+background:var(--gold);color:#111;border-radius:50%;
+display:grid;place-items:center;font-size:22px;z-index:900;
+box-shadow:0 5px 25px #0008;transition:.3s;
+}
+.whatsapp:hover{transform:scale(1.1)}
+
+/* ANIMATIONS */
+
+.reveal{opacity:0;transform:translateY(35px);transition:1s}
+.reveal.visible{opacity:1;transform:none}
+
+@keyframes zoom{to{transform:scale(1.1)}}
+@keyframes rotate{to{transform:rotate(360deg)}}
+@keyframes pulse{
+0%{transform:scale(.92);opacity:.3}
+50%{transform:scale(1.04);opacity:1}
+100%{transform:scale(.92);opacity:.3}
+}
+
+/* MOBILE */
+
+@media(max-width:850px){
+header{height:75px}
+.menu{display:block}
+nav{
+display:none;position:absolute;top:75px;left:0;right:0;
+background:#10100d;padding:20px 7%;
+flex-direction:column;align-items:stretch;gap:0;
+border-bottom:1px solid #c5a36b33;
+}
+nav.active{display:flex}
+nav a{padding:17px 0;border-bottom:1px solid #ffffff12;font-size:11px}
+nav .nav-cta{text-align:center;margin-top:15px;padding:15px}
+.hero{height:760px;min-height:680px}
+.hero-content{padding:50px 7%}
+.hero h1{font-size:clamp(65px,13vw,100px)}
+.hero h1 .gold{margin-left:0}
+.hero-desc,.hero-actions{margin-left:0}
+.orbit{width:210px;right:-85px;top:80%;opacity:.6}
+.hero-side{display:none}
+.section{padding:90px 7%}
+.intro{padding:100px 7%}
+.about{grid-template-columns:1fr}
+.about-visual{min-height:440px}
+.about-visual img{min-height:440px}
+.about-text{padding:75px 8%}
+.experience-layout{grid-template-columns:1fr}
+.exp,.exp:first-child{grid-row:auto;min-height:480px}
+.exp:first-child{min-height:580px}
+.sound-section{grid-template-columns:1fr;gap:15px}
+.sound-art{min-height:330px}
+.sound-circle{width:230px}
+.quote{padding:100px 8%}
+.schedule-row{grid-template-columns:1fr;gap:15px}
+.schedule-times{text-align:left}
+.schedule-head{align-items:flex-start;gap:10px;flex-direction:column}
+.course{grid-template-columns:1fr}
+.course-img,.course-img img{min-height:390px;height:390px}
+.course-copy{padding:75px 8%}
+.gallery-grid{grid-template-columns:1fr 1fr;grid-template-rows:220px 170px 170px}
+.gallery-grid div:first-child{grid-column:span 2;grid-row:auto}
+.contact{grid-template-columns:1fr;padding:85px 8%;gap:45px}
+footer{flex-direction:column;text-align:center}
+}
+
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+.reveal{opacity:1;transform:none}
+}
+</style>
+</head>
+
+<body>
+
+<div class="preloader" id="preloader">
+  <div class="loader-logo">Dhyana Naad</div>
+  <div class="loader-sub">THE ART OF INNER HARMONY</div>
+</div>
+
+<div class="cursor-glow" id="glow"></div>
+
+<div class="topline">
+  <span>MINDFULNESS · MOVEMENT · VIBRATION</span>
+  <span>DEHRADUN, INDIA</span>
+  <span>EST. WITH INTENTION</span>
+</div>
+
+<header id="header">
+  <a href="#home" class="logo">
+    <div class="logo-mark">ॐ</div>
+    <div class="logo-text">
+      Dhyana Naad
+      <small>YOGSHALA</small>
+    </div>
+  </a>
+
+  <button class="menu" id="menu" aria-label="Toggle menu">☰</button>
+
+  <nav id="nav">
+    <a href="#home">HOME</a>
+    <a href="#about">OUR STORY</a>
+    <a href="#experiences">EXPERIENCES</a>
+    <a href="#schedule">SCHEDULE</a>
+    <a href="#courses">COURSES</a>
+    <a href="#contact" class="nav-cta">BEGIN YOUR JOURNEY ↗</a>
+  </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-photo"></div>
+  <div class="hero-shade"></div>
+
+  <div class="hero-content">
+    <div class="kicker">WELCOME TO A DIFFERENT KIND OF STILLNESS</div>
+
+    <h1>
+      <span>The art</span>
+      <span>of <span class="gold">being.</span></span>
+      <span>Present.</span>
+    </h1>
+
+    <p class="hero-desc">
+      A sanctuary where ancient wisdom meets mindful living.
+      Discover the harmony of movement, sound and silence.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#experiences" class="gold-btn">
+        EXPLORE OUR WORLD <span>↗</span>
+      </a>
+      <a href="#about" class="simple-link">OUR PHILOSOPHY</a>
+    </div>
+  </div>
+
+  <div class="orbit">
+    <div class="orbit-ring"></div>
+    <div class="orbit-ring two"></div>
+    <div class="orbit-core">ॐ</div>
+  </div>
+
+  <div class="hero-side">A JOURNEY INWARDS — DHYANA NAAD</div>
+
+  <div class="hero-bottom">
+    <span>YOGA · SOUND HEALING · INNER WELLNESS</span>
+    <span>SCROLL TO EXPLORE ↓</span>
+  </div>
+</section>
+
+<!-- INTRO -->
+<section class="intro reveal" id="about">
+  <div class="intro-symbol">✳</div>
+  <span class="eyebrow">BEYOND THE EVERYDAY</span>
+
+  <h2 class="heading">
+    The world moves fast.<br>
+    <em>Come back to yourself.</em>
+  </h2>
+
+  <p>
+    In the rhythm of everyday life, we often forget to pause.
+    Dhyana Naad Yogshala is a space to reconnect with your breath,
+    embrace mindful movement and experience the beauty of stillness.
+  </p>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-visual">
+    <img src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=1200&q=90" alt="Meditation and mindful practice">
+    <div class="about-number">01</div>
+  </div>
+
+  <div class="about-text reveal">
+    <span class="eyebrow">THE PHILOSOPHY</span>
+    <h2 class="heading">A quieter way<br>to <em>discover life.</em></h2>
+
+    <p>
+      Yoga is more than movement. Sound is more than vibration.
+      Together, they invite us to become more aware of ourselves
+      and the world around us.
+    </p>
+
+    <p>
+      Guided by Dhyana Bhandari, Dhyana Naad Yogshala brings
+      together traditional practices and a welcoming space
+      for mindful exploration.
+    </p>
+
+    <div class="signature">Dhyana Bhandari</div>
+    <div class="about-caption">YOUR GUIDE TO MINDFUL LIVING</div>
+  </div>
+</section>
+
+<!-- EXPERIENCES -->
+<section class="section experiences" id="experiences">
+  <div class="section-head reveal">
+    <span class="eyebrow">THE DHYANA EXPERIENCE</span>
+    <h2 class="heading">Find your own<br><em>way to harmony.</em></h2>
+    <p>Different paths. One intention — a deeper connection with yourself.</p>
+  </div>
+
+  <div class="experience-layout">
+
+    <article class="exp reveal">
+      <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&q=90" alt="Yoga meditation">
+      <div class="exp-content">
+        <span class="exp-index">01 — THE MOVEMENT</span>
+        <h3>Yoga & Mindfulness</h3>
+        <p>Explore mindful movement, breath awareness and the timeless practice of yoga.</p>
+        <a href="#schedule">DISCOVER THE PRACTICE ↗</a>
+      </div>
+    </article>
+
+    <article class="exp reveal">
+      <img src="https://images.unsplash.com/photo-1602192509154-0b900ee1f851?w=1000&q=90" alt="Sound healing bowls">
+      <div class="exp-content">
+        <span class="exp-index">02 — THE VIBRATION</span>
+        <h3>Sound Healing</h3>
+        <p>Experience singing bowls and guided sound sessions in a mindful environment.</p>
+        <a href="#courses">EXPLORE SOUND HEALING ↗</a>
+      </div>
+    </article>
+
+    <article class="exp reveal">
+      <img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=1000&q=90" alt="Nature retreat">
+      <div class="exp-content">
+        <span class="exp-index">03 — THE IMMERSION</span>
+        <h3>Retreats & Workshops</h3>
+        <p>Make space for reflection, learning and meaningful experiences.</p>
+        <a href="#contact">EXPLORE POSSIBILITIES ↗</a>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- SOUND HEALING VISUAL -->
+<section class="section sound-section">
+  <div class="sound-copy reveal">
+    <span class="eyebrow">THE LANGUAGE OF VIBRATION</span>
+    <h2 class="heading">Listen beyond<br>the <em>silence.</em></h2>
+    <p>
+      Sound healing experiences invite you to slow down,
+      listen deeply and explore the relationship between
+      sound, awareness and relaxation.
+    </p>
+    <p>
+      Discover our guided sessions and Sound Healing course
+      at Dhyana Naad Yogshala.
+    </p>
+    <br>
+    <a href="https://wa.me/919557614064?text=Hello%2C%20I%20would%20like%20to%20know%20about%20Sound%20Healing." class="gold-btn">
+      EXPLORE SOUND SESSIONS ↗
+    </a>
+  </div>
+
+  <div class="sound-art">
+    <div class="sound-circle">
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="sound-center"></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote">
+  <div class="quote-mark">“</div>
+  <blockquote>
+    Stillness is not the absence<br>
+    of movement. It is the<br>
+    presence of awareness.
+  </blockquote>
+  <small>THE DHYANA PHILOSOPHY</small>
+</section>
+
+<!-- SCHEDULE -->
+<section class="section schedule" id="schedule">
+  <div class="section-head reveal">
+    <span class="eyebrow">MAKE SPACE FOR YOURSELF</span>
+    <h2 class="heading">Your time.<br><em>Your practice.</em></h2>
+    <p>A glimpse of the regular sessions at our Dehradun studio.</p>
+  </div>
+
+  <div class="schedule-panel">
+
+    <div class="schedule-head">
+      <h3>Weekly Rhythm</h3>
+      <span>MONDAY — SATURDAY</span>
+    </div>
+
+    <div class="schedule-row">
+      <div>
+        <small>MORNING · YOGA</small>
+        <h4>Awaken & Move</h4>
+      </div>
+      <div class="schedule-times">
+        <div>05:00 – 06:00 AM</div>
+        <div>06:00 – 07:00 AM</div>
+      </div>
+    </div>
+
+    <div class="schedule-row">
+      <div>
+        <small>MIDDAY · SOUND HEALING</small>
+        <h4>Listen & Unwind</h4>
+      </div>
+      <div class="schedule-times">
+        <div>10:00 AM – 12:00 PM</div>
+        <div>03:00 – 05:00 PM</div>
+      </div>
+    </div>
+
+    <div class="schedule-row">
+      <div>
+        <small>EVENING · YOGA</small>
+        <h4>Return to Stillness</h4>
+      </div>
+      <div class="schedule-times">
+        <div>05:00 – 06:00 PM</div>
+      </div>
+    </div>
+
+    <div class="saturday">
+      <span>THE SATURDAY SPECIAL</span>
+      <h3>Yoga + Sound Healing</h3>
+      <span>05:30 – 06:30 AM</span>
+    </div>
+
+    <p class="schedule-note">
+      Wednesday includes cleansing activities. Contact the studio
+      to confirm session details and current availability.
+    </p>
+  </div>
+</section>
+
+<!-- COURSE -->
+<section class="course" id="courses">
+  <div class="course-img">
+    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=1200&q=90" alt="Mindful wellness practice">
+  </div>
+
+  <div class="course-copy reveal">
+    <span class="eyebrow">LEARN · EXPLORE · EXPERIENCE</span>
+    <h2 class="heading">Go deeper<br>into <em>sound.</em></h2>
+
+    <p>
+      Interested in understanding Sound Healing?
+      Explore our course and discover opportunities
+      to learn about sound, vibration and mindful listening.
+    </p>
+
+    <a href="https://wa.me/919557614064?text=Hello%2C%20please%20share%20the%20Sound%20Healing%20course%20details." class="gold-btn">
+      REQUEST COURSE DETAILS ↗
+    </a>
+
+    <br><br>
+    <a href="assets/brochure.pdf" target="_blank" class="simple-link">VIEW COURSE BROCHURE ↗</a>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="section gallery">
+  <div class="section-head reveal">
+    <span class="eyebrow">VISUAL JOURNAL</span>
+    <h2 class="heading">Moments of <em>presence.</em></h2>
+    <p>Every moment offers a reason to reconnect.</p>
+  </div>
+
+  <div class="gallery-grid">
+    <div><img src="https://images.unsplash.com/photo-1545389336-cf090694435e?w=1100&q=85" alt="Meditation"></div>
+    <div><img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=900&q=85" alt="Yoga"></div>
+    <div><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=900&q=85" alt="Movement"></div>
+    <div><img src="https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=900&q=85" alt="Nature"></div>
+    <div><img src="https://images.unsplash.com/photo-1510894347719-f3f7a2f5e4a5?w=900&q=85" alt="Mindfulness"></div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="section video-section">
+  <div class="section-head reveal">
+    <span class="eyebrow">STEP INSIDE OUR WORLD</span>
+    <h2 class="heading">Experience it <em>yourself.</em></h2>
+  </div>
+
+  <div style="max-width:950px;margin:auto;aspect-ratio:16/9;background:#181812">
+    <iframe
+      width="100%" height="100%"
+      src="https://www.youtube-nocookie.com/embed/VIDEO_ID"
+      title="Dhyana Naad Yogshala video"
+      style="border:0"
+      loading="lazy"
+      allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-copy reveal">
+    <span class="eyebrow">A NEW CHAPTER BEGINS</span>
+    <h2 class="heading">Come as you are.<br><em>Leave inspired.</em></h2>
+
+    <p>
+      Whether you are exploring yoga, curious about sound healing
+      or looking for a mindful space, we'd love to connect.
+    </p>
+
+    <a href="https://wa.me/919557614064?text=Hello%2C%20I%20would%20like%20to%20connect%20with%20Dhyana%20Naad%20Yogshala." class="gold-btn">
+      START A CONVERSATION ↗
+    </a>
+  </div>
+
+  <div class="contact-info">
+    <div class="contact-item">
+      <small>CALL / WHATSAPP</small>
+      <a href="tel:+919557614064">+91 95576 14064</a>
+    </div>
+
+    <div class="contact-item">
+      <small>FIND OUR SANCTUARY</small>
+      <p>
+        Top Floor, Shree Ji Tower,<br>
+        Near Doon University Chowk,<br>
+        Mothrowala, Dehradun,<br>
+        Uttarakhand – 248001
+      </p>
+      <a href="https://www.google.com/maps/search/?api=1&query=Shree+Ji+Tower+Mothrowala+Dehradun" target="_blank" rel="noopener">OPEN DIRECTIONS ↗</a>
+    </div>
+
+    <div class="contact-item">
+      <small>FOLLOW THE JOURNEY</small>
+      <div class="social">
+        <a href="https://www.instagram.com/Dhyana_Naad_Yogshala/" target="_blank" rel="noopener">INSTAGRAM ↗</a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener">FACEBOOK ↗</a>
+        <a href="https://www.youtube.com/" target="_blank" rel="noopener">YOUTUBE ↗</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <a href="#home" class="footer-brand">Dhyana Naad</a>
+  <span>THE ART OF INNER HARMONY</span>
+  <span>© <span id="year"></span> DHYANA NAAD YOGSHALA</span>
+  <span class="credit">DIGITAL EXPERIENCE BY <strong>WEBLYFT</strong></span>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/919557614064" target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
+
+<script>
+// PRELOADER
+window.addEventListener("load",()=>{
+  setTimeout(()=>document.getElementById("preloader").classList.add("hide"),900);
+});
+
+// MOBILE MENU
+const menu=document.getElementById("menu");
+const nav=document.getElementById("nav");
+
+menu.addEventListener("click",()=>{
+  nav.classList.toggle("active");
+  menu.textContent=nav.classList.contains("active")?"✕":"☰";
+});
+
+nav.querySelectorAll("a").forEach(a=>{
+  a.addEventListener("click",()=>{
+    nav.classList.remove("active");
+    menu.textContent="☰";
+  });
+});
+
+// HEADER
+window.addEventListener("scroll",()=>{
+  document.getElementById("header").classList.toggle("scrolled",window.scrollY>40);
+});
+
+// REVEAL
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+},{threshold:.12});
+
+document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
+
+// YEAR
+document.getElementById("year").textContent=new Date().getFullYear();
+
+// DESKTOP AMBIENT LIGHT
+const glow=document.getElementById("glow");
+if(window.matchMedia("(pointer:fine)").matches){
+  window.addEventListener("pointermove",e=>{
+    glow.style.left=e.clientX+"px";
+    glow.style.top=e.clientY+"px";
+  });
+}else{
+  glow.style.display="none";
+}
+</script>
+
+</body>
+</html>
