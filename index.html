@@ -842,3 +842,114 @@ window.addEventListener('DOMContentLoaded',()=>{dnApplyEdits();dnInit();});
 </script>
 </body>
 </html>
+
+
+<!-- ADD-ON: frame-aware photo crop editor. Existing website/admin code above is retained. -->
+<style>
+#dn-crop-modal{display:none;position:fixed;inset:0;z-index:100000;background:rgba(20,30,20,.82);padding:18px;overflow:auto;font-family:'DM Sans',sans-serif}
+#dn-crop-modal .dn-crop-panel{width:min(760px,100%);margin:3vh auto;background:#f7f2e6;border:1px solid #b99553;border-radius:14px;padding:20px;box-shadow:0 18px 60px #0005}
+#dn-crop-modal .dn-crop-head{display:flex;justify-content:space-between;align-items:center;gap:12px}
+#dn-crop-modal h2{font:600 28px 'Cormorant Garamond',serif;color:#234b29;margin:0}
+#dn-crop-modal p{font-size:11px;color:#77766a;margin:8px 0 14px}
+#dn-crop-modal .dn-crop-stage{position:relative;width:min(100%,650px);height:340px;margin:12px auto;background:#e8dfc8;overflow:hidden;border:1px solid #b99553;touch-action:none;cursor:grab}
+#dn-crop-modal .dn-crop-stage:active{cursor:grabbing}
+#dn-crop-modal .dn-crop-stage img{position:absolute;max-width:none;max-height:none;user-select:none;-webkit-user-drag:none;pointer-events:none}
+#dn-crop-modal .dn-crop-controls{display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center;margin:12px 0}
+#dn-crop-modal input[type=range]{width:100%;accent-color:#234b29}
+#dn-crop-modal .dn-crop-actions{display:flex;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+#dn-crop-modal button{border:0;border-radius:24px;padding:11px 17px;background:#234b29;color:white;font-size:11px;font-weight:700;cursor:pointer}
+#dn-crop-modal button.alt{background:#e8dfc8;color:#234b29}
+#dn-crop-modal button:disabled{opacity:.55;cursor:wait}
+@media(max-width:600px){#dn-crop-modal{padding:8px}#dn-crop-modal .dn-crop-panel{padding:14px;margin:1vh auto}#dn-crop-modal .dn-crop-stage{height:270px}#dn-crop-modal .dn-crop-controls{grid-template-columns:1fr}}
+</style>
+<div id="dn-crop-modal" aria-hidden="true">
+ <div class="dn-crop-panel">
+  <div class="dn-crop-head"><h2>Adjust Photo to Website Frame</h2><button type="button" class="alt" id="dn-crop-close">Close ×</button></div>
+  <p>Drag the photo to reposition it, use the slider to zoom, and preview it in the same shape as its website frame.</p>
+  <div id="dn-crop-stage" class="dn-crop-stage"><img id="dn-crop-image" alt="Photo crop preview"></div>
+  <div class="dn-crop-controls"><div><label for="dn-crop-zoom">Zoom</label><input id="dn-crop-zoom" type="range" min="1" max="3" step="0.01" value="1"></div><strong id="dn-crop-zoom-label">100%</strong></div>
+  <div class="dn-crop-actions"><button type="button" class="alt" id="dn-crop-reset">Reset</button><button type="button" id="dn-crop-save">Apply Crop & Upload</button></div>
+  <div id="dn-crop-status" class="dn-status"></div>
+ </div>
+</div>
+<script>
+(()=>{
+ const modal=document.getElementById('dn-crop-modal'),stage=document.getElementById('dn-crop-stage'),preview=document.getElementById('dn-crop-image'),zoom=document.getElementById('dn-crop-zoom'),zoomLabel=document.getElementById('dn-crop-zoom-label'),status=document.getElementById('dn-crop-status'),saveBtn=document.getElementById('dn-crop-save');
+ if(!modal||!stage||!preview)return;
+ let target=null,sourceUrl='',sourceImage=null,scale=1,baseScale=1,x=0,y=0,startX=0,startY=0,pointerX=0,pointerY=0,dragging=false,frameW=0,frameH=0,frameRadius='0px',frameBorder='0px';
+ const setStatus=t=>status.textContent=t;
+ function getUrl(el,type){if(type==='image')return el.currentSrc||el.src;const bg=getComputedStyle(el).backgroundImage;const m=bg.match(/url\(["']?(.*?)["']?\)/);return m?m[1]:'';}
+ function render(){
+   const w=stage.clientWidth,h=stage.clientHeight;
+   if(!sourceImage||!w||!h)return;
+   const iw=sourceImage.naturalWidth,ih=sourceImage.naturalHeight;
+   baseScale=Math.max(w/iw,h/ih);
+   const drawW=iw*baseScale*scale,drawH=ih*baseScale*scale;
+   const minX=w-drawW,minY=h-drawH;
+   x=Math.min(0,Math.max(minX,x));y=Math.min(0,Math.max(minY,y));
+   preview.style.width=drawW+'px';preview.style.height=drawH+'px';
+   preview.style.left=x+'px';preview.style.top=y+'px';
+   zoomLabel.textContent=Math.round(scale*100)+'%';
+ }
+ function openEditor(el,type){
+   target={el,type};sourceUrl=getUrl(el,type);
+   if(!sourceUrl){alert('Is frame ki image URL nahi mil paayi.');return;}
+   const cs=getComputedStyle(el);
+   frameRadius=cs.borderRadius;frameBorder=cs.border;
+   stage.style.borderRadius=frameRadius;
+   stage.style.border=frameBorder;
+   const rect=el.getBoundingClientRect();
+   stage.style.aspectRatio=(rect.width||16)+' / '+(rect.height||9);
+   stage.style.minHeight='0';stage.style.height=Math.min(420,Math.max(180,Math.min(650,stage.parentElement.clientWidth-40)*(rect.height||9)/(rect.width||16)))+'px';
+   modal.style.display='block';modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden';
+   preview.onload=()=>{sourceImage=preview;x=0;y=0;scale=1;zoom.value='1';requestAnimationFrame(render);setStatus('Drag to position. Zoom to fit the image naturally.');};
+   preview.onerror=()=>setStatus('Photo load nahi hui. Check that the image URL is publicly accessible.');
+   preview.src=sourceUrl;
+ }
+ function closeEditor(){modal.style.display='none';modal.setAttribute('aria-hidden','true');document.body.style.overflow='';target=null;sourceImage=null;preview.removeAttribute('src');}
+ document.getElementById('dn-crop-close').addEventListener('click',closeEditor);
+ modal.addEventListener('click',e=>{if(e.target===modal)closeEditor();});
+ zoom.addEventListener('input',()=>{const old=scale;scale=Number(zoom.value);const w=stage.clientWidth,h=stage.clientHeight;const cx=(w/2-x)/old,cy=(h/2-y)/old;x=w/2-cx*scale;y=h/2-cy*scale;render();});
+ document.getElementById('dn-crop-reset').addEventListener('click',()=>{scale=1;zoom.value='1';x=0;y=0;render();});
+ stage.addEventListener('pointerdown',e=>{if(!sourceImage)return;dragging=true;stage.setPointerCapture(e.pointerId);pointerX=e.clientX;pointerY=e.clientY;startX=x;startY=y;});
+ stage.addEventListener('pointermove',e=>{if(!dragging)return;x=startX+e.clientX-pointerX;y=startY+e.clientY-pointerY;render();});
+ stage.addEventListener('pointerup',()=>dragging=false);stage.addEventListener('pointercancel',()=>dragging=false);
+ stage.addEventListener('wheel',e=>{e.preventDefault();const old=scale;scale=Math.max(1,Math.min(3,scale+(e.deltaY<0?.08:-.08)));zoom.value=String(scale);const r=stage.getBoundingClientRect(),cx=e.clientX-r.left,cy=e.clientY-r.top,ix=(cx-x)/old,iy=(cy-y)/old;x=cx-ix*scale;y=cy-iy*scale;render();},{passive:false});
+ saveBtn.addEventListener('click',async()=>{
+   if(!target||!sourceImage||!dnClient||!dnUser){setStatus('Owner login required.');return;}
+   saveBtn.disabled=true;setStatus('Preparing cropped image…');
+   try{
+     const w=Math.max(1,Math.round(stage.clientWidth*2)),h=Math.max(1,Math.round(stage.clientHeight*2)),canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;
+     const ctx=canvas.getContext('2d');const sx=-x/stage.clientWidth*sourceImage.naturalWidth/(baseScale*scale),sy=-y/stage.clientHeight*sourceImage.naturalHeight/(baseScale*scale);
+     const sw=stage.clientWidth/(baseScale*scale),sh=stage.clientHeight/(baseScale*scale);
+     ctx.drawImage(sourceImage,sx,sy,sw,sh,0,0,w,h);
+     const blob=await new Promise(resolve=>canvas.toBlob(resolve,'image/jpeg',.92));if(!blob)throw new Error('Could not create cropped image.');
+     const path=dnUser.id+'/'+Date.now()+'-cropped-photo.jpg';
+     const {error}=await dnClient.storage.from(DN_BUCKET).upload(path,blob,{upsert:false,contentType:'image/jpeg'});if(error)throw error;
+     const {data}=dnClient.storage.from(DN_BUCKET).getPublicUrl(path),url=data.publicUrl;
+     if(target.type==='image'){target.el.src=url;target.el.removeAttribute('srcset');}else dnSetBackgroundUrl(target.el,url);
+     const selector=dnSelector(target.el);dnEdits[selector]={type:target.type,value:url};dnRefreshJson();
+     if(typeof dnStatus==='function')dnStatus('Cropped photo applied in preview. Click Publish changes to make it live for all visitors.');
+     setStatus('Crop uploaded. Now click “Publish changes” in Owner Studio to publish it.');saveBtn.disabled=false;
+   }catch(err){setStatus('Crop/upload failed: '+(err.message||err));saveBtn.disabled=false;}
+ });
+ function addCropButtons(){
+   document.querySelectorAll('#dn-media-grid .dn-media-item').forEach(card=>{
+     if(card.querySelector('.dn-crop-open'))return;
+     const meta=card.querySelector('small');if(!meta)return;
+     const btn=document.createElement('button');btn.type='button';btn.className='dn-crop-open';btn.textContent='Crop & fit frame';
+     btn.addEventListener('click',()=>{
+       const raw=meta.textContent||'',sep=raw.indexOf(' · '),selector=sep>=0?raw.slice(sep+3):'';
+       let el=null;try{el=selector?document.querySelector(selector):null;}catch(e){}
+       if(!el){setStatus('Could not locate this image on the page. Refresh the photo list and try again.');return;}
+       openEditor(el,raw.startsWith('Image')?'image':'background');
+     });
+     card.appendChild(btn);
+   });
+ }
+ const grid=document.getElementById('dn-media-grid');
+ if(grid)new MutationObserver(addCropButtons).observe(grid,{childList:true,subtree:true});
+ document.getElementById('dn-scan-media')?.addEventListener('click',()=>setTimeout(addCropButtons,50));
+ setTimeout(addCropButtons,500);
+})();
+</script>
